@@ -2,7 +2,7 @@
 <html ng-app="blogApp">
 <head>
 <meta charset="utf-8">
-<script src="/lib/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="/lib/angular-route.min.js"></script>
 <script src="/lib/angular-ui-router.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
-	<!-- Navigation -->  
+    <!-- Navigation -->  
     <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
     <a class="navbar-brand" href="#/">My Blog</a>
     <div class="collapse navbar-collapse">
@@ -23,7 +23,7 @@
     </nav>
 
     <!--Angular Templates -->
-    <script type="text/ng-template" id="pages/index.html">
+    <script type="text/ng-template" id="pages/home.html">
     	<p></p>
     	<h1>{{vm.title}}</h1>
     	<h4>{{vm.message}}</h4>
@@ -33,14 +33,79 @@
     	<p></p>
     	<h1>{{vm.title}}</h1>
     	<h4>{{vm.message}}</h4>
+	<div ng-repeat="blog in vm.blogs">
+	  <div class="card" style="width: 50%;">
+	    <div class="card border-dark">
+	      <div class="card-header">
+		<div class="row">
+		  <div class="col-sm">
+		    {{blog.blogTitle}}
+		  </div>
+		</div>
+	      </div>
+	      <div class="card-body">
+		<p class="card-text">
+		  {{blog.blogText}}
+		</p>
+	      </div>
+	      <div class="card-footer">
+                <p class="card-text" style="font-size: .6em">
+		  {{blog.createdDate}}
+		</p>
+		<ul class="nav justify-content-end">
+		  <li class="nav-item">
+		    <a class="nav-link text-success" href="#/blogedit">Edit</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link text-success" href="#/blogdelete">Delete</a>
+		  </li>
+		</ul>
+	      </div>
+	    </div>
+	  </div>
+	  <div style="clear:both;"></div>
+	</div> <!-- End Card -->
     </script>
 
     <script type="text/ng-template" id="pages/blogadd.html">
     	<p></p>
     	<h1>{{vm.title}}</h1>
     	<h4>{{vm.message}}</h4>
+	<div class="card" style="width: 50%;">
+	    <form name="userForm" ng-Controller="addCtrl" ng-submit="vm.onSubmit()" style="padding: 20px;">
+	        <div class="form-group">
+		  <label style="width: 100%;">
+	              Blog Title</label>
+		  <input class="form-control" name="blogTitle" type="text">
+                </div>
+		  
+		  <div class="form-group">
+		        <label style="width: 100%">
+			        Blog Text
+				      <textarea class="form-control" name="blogText" rows="5" type="text"></textarea>
+				          </label>
+
+			  <div class="text-right">
+			        <input class="btn btn-success" value="Submit" type="submit">
+				  </div>
+			    </form>
+	      </div>
     </script>
+
+    <script type="text/ng-template" id="pages/blogedit.html">
+      <p></p>
+      <h1>{{vm.title}}</h1>
+      <h4>{{vm.message}}</h4>
+    </script>
+
+    <script type="text/ng-template" id="pages/blogdelete.html">
+      <p></p>
+      <h1>{{vm.title}}</h1>
+      <h4>{{vm.message}}</h4>
+    </script>
+    
     <div ng-view></div>
+    
     <script src="/blogApp.js"></script>
 </body>
 </html>

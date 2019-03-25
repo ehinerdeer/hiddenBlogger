@@ -1,11 +1,11 @@
-/* Start of bloggerApp */
-var app = angular.module('blogApp', []);
+/* Start of blogApp */
+var app = angular.module('blogApp', ['ngRoute']);
 
 /* Route Provider */
 app.config(function($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'pages/index.html',
+			templateUrl: 'pages/home.html',
 			controller: 'homeCtrl',
 			controllerAs: 'vm'
 		})
@@ -15,17 +15,17 @@ app.config(function($routeProvider) {
 			controllerAs: 'vm'
 		})
 		.when('/blogadd', {
-			templareUrl: 'pages/blogadd.html',
+			templateUrl: 'pages/blogadd.html',
 			controller: 'addCtrl',
 			controllerAs: 'vm'
 		})
 		.when('/blogedit', {
-			templareUrl: 'pages/blogedit.html',
+			templateUrl: 'pages/blogedit.html',
 			controller: 'editCtrl',
 			controllerAs: 'vm'
 		})
 		.when('/blogdelete', {
-			templareUrl: 'pages/blogdelete.html',
+			templateUrl: 'pages/blogdelete.html',
 			controller: 'deleteCtrl',
 			controllerAs: 'vm'
 		})
@@ -39,27 +39,65 @@ app.controller('homeCtrl', function homeCtrl() {
 	vm.message = "Welcome to my Blog Site";
 }) ;
 
-app.controller('listCtrl', function listCtrl() {
+app.controller('listCtrl', function listCtrl($http) {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
-    vm.message = "Blog List";
+        vm.message = "Blog List";
+
+        getAllBlogs($http)
+        .success(function(data) {
+	    vm.blogs = data;
+	    vm.message = "Found Blogs!";
+	})
+        .error(function(e) {
+	    vm.message = "Could not get Blog List";
+	});
 });
 
-app.controller('addCtrl', function addCtrl() {
-	var vm = this;
-	vm.title = "Eric Hinerdeer Blog Site";
-	vm.message = "Add A Blog";
+app.controller('addCtrl', function addCtrl($http) {
+    var vm = this;
+    vm.blog = {};
+    vm.title = "Eric Hinerdeer Blog Site";
+    vm.message = "Add A Blog";
+
+    vm.onSubmit = function() {
+
+	var data = vm.blog;
+	data.blogTitle = userForm.blogTitle.value;
+	data.blogText = userForm.blogText.value;
+	
+	addOneBlog($http, data)
+		.success(function(data) {
+		    console.log(data);
+		})
+		.error(function(e) {
+		    console.log(e);
+		});
+        };
 });
 
-app.controller('editCtrl', function editCtrl() {
+app.controller('editCtrl', function editCtrl($scope, $http) {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
-	vm.message = "Edit Your Blog";
+        vm.message = "Edit Your Blog";
+        
 });
 
 app.controller('deleteCtrl', function deleteCtrl() {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
 	vm.message = "Delete Your Blog";
-})
+});
 
+/* REST Functions */
+function getAllBlogs($http) {
+    return $http.get('/api/blog');
+}
+
+function readOneBlog($scope , $http) {
+    return $http.get('/api/blog/');
+}
+
+function addOneBlog($http, data) {
+    return $http.post('/api/blog', data);
+}
