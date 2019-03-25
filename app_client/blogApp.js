@@ -16,7 +16,7 @@ app.config(function($routeProvider) {
 		})
 		.when('/blogadd', {
 			templareUrl: 'pages/blogadd.html',
-			controller: 'addCtrl'
+			controller: 'addCtrl',
 			controllerAs: 'vm'
 		})
 		.when('/blogedit', {
