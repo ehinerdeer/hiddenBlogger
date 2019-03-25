@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="blogApp">
+<head>
+<meta charset="utf-8">
+<script src="/lib/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="./public/stylesheets/style.css" />
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+	<!-- Navigation -->  
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="#/">My Blog</a>
+    <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#/bloglist">Blog List</a>
+        <a class="nav-item nav-link active" href="#/blogadd">Add Blog</a>
+        </div>
+    </div>
+    </nav>
+
+    <!--Angular Templates -->
+    <script type="text/ng-template" id="pages/index.html">
+    	<br>
+    	<h1>{{vm.title}}</h1>
+    	<h4>{{vm.message}}</h4>
+    </script>
+
+    <script type="text/ng-template" id="pages/bloglist.html">
+    	<br>
+    	<h1>{{vm.title}}</h1>
+    	<h4>{{vm.message}}</h4>
+    </script>
+
+    <script type="text/ng-template" id="pages/blogadd.html">
+    	<br>
+    	<h1>{{vm.title}}</h1>
+    	<h4>{{vm.message}}</h4>
+    </script>
+    <div ng-view></div>
+    <script src="/blogApp.js"></script>
+</body>
+</html>
