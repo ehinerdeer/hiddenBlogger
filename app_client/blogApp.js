@@ -76,7 +76,7 @@ app.controller('addCtrl', function addCtrl($http) {
         };
 });
 
-app.controller('editCtrl',[ $http,reqParams, function editCtrl($http) {
+app.controller('editCtrl',[ $http, reqParams, function editCtrl($http, reqParams) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
@@ -84,26 +84,27 @@ app.controller('editCtrl',[ $http,reqParams, function editCtrl($http) {
     vm.blogEntry = {};
     vm.editBlog = {};
 
-    data = readOneBlog($http, reqParams._id)
+    var data = readOneBlog($http, reqParams.blogid)
 	.success(function(data) {
+		vm.blogEntry.blogText = data.blogText;
+    	vm.blogEntry.blogTitle = data.blogTitle;
 	    console.log(data);
 	})
 	.error(function(e) {
 	    console.log(e);
 	});
 	
-    vm.blogEntry.blogText = data.blogText;
-    vm.blogEntry.blogTitle = data.blogTitle;
+    
 
     vm.onSubmit = function() {
 
-	var data = vm.editBlog;
-	data.blogTitle = userForm.blogTitle.value;
-	data.blogText = userForm.blogText.value;
+	var submitData = vm.editBlog;
+	submitData.blogTitle = userForm.blogTitle.value;
+	submitData.blogText = userForm.blogText.value;
 	
-	editOneBlog($http, data, reqParams._id)
-		.success(function(data) {
-		    console.log(data);
+	editOneBlog($http, data, reqParams.blogid)
+		.success(function(submitData) {
+		    console.log(submitData);
 		})
 		.error(function(e) {
 		    console.log(e);

@@ -102,16 +102,17 @@
 	      <label for="blogTitle"  class="text-dark">
 		Blog Title
 	      </label>
-	      <input class="form-control" name="blogTitle" value="vm.blogEntry.blogTitle">
+	      <input class="form-control" name="blogTitle" value="{{vm.blogEntry.blogTitle}}">
    
               <label for="blogText" class="text-dark" style="width: 100%;">
 		Blog Text
 	      </label>
-	      <input class="form-control" name="blogText" rows="5" value="vm.blogEntry.blogText"></textarea>
+	      <input class="form-control" name="blogText" rows="5" value="{{vm.blogEntry.blogText}}"></textarea>
           <input type="submit" class="btn btn-success" value="Save">
 
             </div>
           </form>
+      </div>
     </script>
 
     <script type="text/ng-template" id="pages/blogdelete.html">

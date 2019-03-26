@@ -79,8 +79,7 @@ if(req.params && req.params.blogid){
 	});
 } else {
     console.log('No blogid in request');
-    sendJsonResponse(res, 404, { "message" : "No blogid in request"
-			       });
+    sendJsonResponse(res, 404, { "message" : "No blogid in request" });
 }
 };
 
