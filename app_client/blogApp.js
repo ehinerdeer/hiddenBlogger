@@ -76,12 +76,30 @@ app.controller('addCtrl', function addCtrl($http) {
         };
 });
 
-app.controller('editCtrl', function editCtrl($scope, $http) {
-	var vm = this;
-	vm.title = "Eric Hinerdeer Blog Site";
-        vm.message = "Edit Your Blog";
-        
-});
+app.controller('editCtrl',[ $http,reqParams, function editCtrl($http) {
+    var vm = this;
+    vm.title = "Eric Hinerdeer Blog Site";
+    vm.message = "Edit Your Blog";
+    
+    var data = {};
+    data = readOneBlog($http, reqParams._id)
+	.success(function(data) {
+	    console.log(data);
+	})
+	.error(function(e) {
+	    console.log(e);
+	});
+    vm.onSubmit = function() {
+	updateOneBlog($http, data._id)
+	    .success(function(data) {
+		console.log(data);
+	    })
+	    .error(function(e) {
+		console.log(e);
+	    });
+    }
+    
+}]);
 
 app.controller('deleteCtrl', function deleteCtrl() {
 	var vm = this;
@@ -94,8 +112,12 @@ function getAllBlogs($http) {
     return $http.get('/api/blog');
 }
 
-function readOneBlog($scope , $http) {
-    return $http.get('/api/blog/');
+function readOneBlog($http, id) {
+    return $http.get('/api/blog/' + id);
+}
+
+function updateOneBlog($http, id) {
+    return $http.put('/api/blog/' + id);
 }
 
 function addOneBlog($http, data) {
