@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
 			controller: 'addCtrl',
 			controllerAs: 'vm'
 		})
-		.when('/blogedit', {
+		.when('/blogedit/', {
 			templateUrl: 'pages/blogedit.html',
 			controller: 'editCtrl',
 			controllerAs: 'vm'
@@ -93,8 +93,6 @@ app.controller('editCtrl',[ $http, reqParams, function editCtrl($http, reqParams
 	.error(function(e) {
 	    console.log(e);
 	});
-	
-    
 
     vm.onSubmit = function() {
 
