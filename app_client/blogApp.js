@@ -81,7 +81,9 @@ app.controller('editCtrl',[ $http,reqParams, function editCtrl($http) {
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
     
-    var data = {};
+    vm.blogEntry = {};
+    vm.editBlog = {};
+
     data = readOneBlog($http, reqParams._id)
 	.success(function(data) {
 	    console.log(data);
@@ -89,15 +91,25 @@ app.controller('editCtrl',[ $http,reqParams, function editCtrl($http) {
 	.error(function(e) {
 	    console.log(e);
 	});
+	
+    vm.blogEntry.blogText = data.blogText;
+    vm.blogEntry.blogTitle = data.blogTitle;
+
     vm.onSubmit = function() {
-	updateOneBlog($http, data._id)
-	    .success(function(data) {
-		console.log(data);
-	    })
-	    .error(function(e) {
-		console.log(e);
-	    });
-    }
+
+	var data = vm.editBlog;
+	data.blogTitle = userForm.blogTitle.value;
+	data.blogText = userForm.blogText.value;
+	
+	editOneBlog($http, data, reqParams._id)
+		.success(function(data) {
+		    console.log(data);
+		})
+		.error(function(e) {
+		    console.log(e);
+		});
+        };
+
     
 }]);
 
@@ -116,8 +128,8 @@ function readOneBlog($http, id) {
     return $http.get('/api/blog/' + id);
 }
 
-function updateOneBlog($http, id) {
-    return $http.put('/api/blog/' + id);
+function updateOneBlog($http, data, id) {
+    return $http.put('/api/blog/' + id , data);
 }
 
 function addOneBlog($http, data) {

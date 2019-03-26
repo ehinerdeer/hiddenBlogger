@@ -80,15 +80,15 @@
                 </div>
 		  
 		  <div class="form-group">
-		        <label style="width: 100%">
-			        Blog Text
-				      <textarea class="form-control" name="blogText" rows="5" type="text"></textarea>
-				          </label>
+		    <label style="width: 100%">
+			   Blog Text
+			<textarea class="form-control" name="blogText" rows="5" type="text"></textarea>
+			</label>
 
-			  <div class="text-right">
-			        <input class="btn btn-success" value="Submit" type="submit">
-				  </div>
-			    </form>
+			<div class="text-right">
+				<input class="btn btn-success" value="Submit" type="submit">
+			</div>
+		</form>
 	      </div>
     </script>
 
@@ -96,6 +96,22 @@
       <p></p>
       <h1>{{vm.title}}</h1>
       <h4>{{vm.message}}</h4>
+      <div class="card">
+	  <form name="userForm" ng-Controller="editCtrl" ng-submit="vm.onSubmit()" style="padding: 20px;">
+	    <div class="form-group">
+	      <label for="blogTitle"  class="text-dark">
+		Blog Title
+	      </label>
+	      <input class="form-control" name="blogTitle" value="vm.blogEntry.blogTitle">
+   
+              <label for="blogText" class="text-dark" style="width: 100%;">
+		Blog Text
+	      </label>
+	      <input class="form-control" name="blogText" rows="5" value="vm.blogEntry.blogText"></textarea>
+          <input type="submit" class="btn btn-success" value="Save">
+
+            </div>
+          </form>
     </script>
 
     <script type="text/ng-template" id="pages/blogdelete.html">
