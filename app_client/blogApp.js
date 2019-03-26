@@ -85,15 +85,16 @@ app.controller('editCtrl', function editCtrl($http, reqParams) {
     vm.blogEntry = {};
     vm.editBlog = {};
 
-    var data = readOneBlog($http, reqParams.blogid)
-	.success(function(data) {
-	    vm.blogEntry.blogText = data.blogText;
-    	vm.blogEntry.blogTitle = data.blogTitle;
-	    console.log(data);
-	})
-	.error(function(e) {
-	    console.log(e);
-	});
+    var blogData = readOneBlog($http, reqParams.blogid)
+		.success(function(data) {
+	    	console.log(data);
+		})
+		.error(function(e) {
+	    	console.log(e);
+		});
+
+	vm.blogText = blogData.blogText;
+	vm.blogTitle = blogData.blogTitle;	
 
     vm.onSubmit = function() {
 
@@ -101,7 +102,7 @@ app.controller('editCtrl', function editCtrl($http, reqParams) {
 	submitData.blogTitle = userForm.blogTitle.value;
 	submitData.blogText = userForm.blogText.value;
 	
-	editOneBlog($http, data, reqParams.blogid)
+	editOneBlog($http, submitData, reqParams.blogid)
 		.success(function(submitData) {
 		    console.log(submitData);
 		})
@@ -134,4 +135,8 @@ function updateOneBlog($http, data, id) {
 
 function addOneBlog($http, data) {
     return $http.post('/api/blog', data);
+}
+
+function deleteOneBlog($http, id) {
+	return $http.delete('/api/blog/' + id);
 }
