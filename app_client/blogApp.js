@@ -63,6 +63,7 @@ app.controller('addCtrl', function addCtrl($http) {
     vm.onSubmit = function() {
 
 	var data = vm.blog;
+	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
 	
