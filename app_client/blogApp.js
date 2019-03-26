@@ -19,7 +19,7 @@ app.config(function($routeProvider) {
 			controller: 'addCtrl',
 			controllerAs: 'vm'
 		})
-		.when('/blogedit/', {
+		.when('/blogedit', {
 			templateUrl: 'pages/blogedit.html',
 			controller: 'editCtrl',
 			controllerAs: 'vm'
@@ -77,7 +77,7 @@ app.controller('addCtrl', function addCtrl($http) {
         };
 });
 
-app.controller('editCtrl',[ $http, reqParams, function editCtrl($http, reqParams) {
+app.controller('editCtrl', function editCtrl($http, reqParams) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
@@ -87,7 +87,7 @@ app.controller('editCtrl',[ $http, reqParams, function editCtrl($http, reqParams
 
     var data = readOneBlog($http, reqParams.blogid)
 	.success(function(data) {
-		vm.blogEntry.blogText = data.blogText;
+	    vm.blogEntry.blogText = data.blogText;
     	vm.blogEntry.blogTitle = data.blogTitle;
 	    console.log(data);
 	})
@@ -111,7 +111,7 @@ app.controller('editCtrl',[ $http, reqParams, function editCtrl($http, reqParams
         };
 
     
-}]);
+});
 
 app.controller('deleteCtrl', function deleteCtrl() {
 	var vm = this;
