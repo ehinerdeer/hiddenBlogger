@@ -77,48 +77,70 @@ app.controller('addCtrl', function addCtrl($http) {
         };
 });
 
-app.controller('editCtrl', function editCtrl($http, $reqParams) {
+app.controller('editCtrl', [ '$http', '$routeParams', '$state', function editCtrl($http, $reqParams) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
+    vm.blog = {};
+    vm.id = $routeParams.blogid;
 
-    vm.blogTitle = "";
-    vm.blogText = "";
+    readOneBlog($http, vm.id)
+    	.success(function(data) {
+    		vm.blog = data;
+    		vm.message = "Blog Found!"
+    })
+    .error(function(e) {
+    	vm.message = "Could not get blog with id: " + vm.id;
+    })
 
-    var blogData = readOneBlog($http, $reqParams.blogid)
-		.success(function(data) {
-	    	console.log(data);
-		})
-		.error(function(e) {
-	    	console.log(e);
-		});
+    vm.submit = function() {
+    	var data = vm.blog;
+    	data.blogTitle = userForm.blogTitle.value;
+    	data.blogText = userForm.blogTitle.value;
 
-    vm.blogText = blogData.blogText;
-    vm.blogTitle = blogData.blogTitle;	
-
-    vm.onSubmit = function() {
-
-	var submitData = vm.editBlog;
-	submitData.blogTitle = userForm.blogTitle.value;
-	submitData.blogText = userForm.blogText.value;
-	
-	editOneBlog($http, submitData, $reqParams.blogid)
-		.success(function(submitData) {
-		    console.log(submitData);
-		})
-		.error(function(e) {
-		    console.log(e);
-		});
-        };
-
+    	updateOneBlog($http, vm.id, data)
+    		.success(function(data) {
+    			vm.message = "Blog Updated!";
+    			$state.go('bloglist');
+    		})
+    		.error(function(e) {
+    			vm.message = "Could not update blog with id: " + vm.id;
+    		});
+    }
     
-});
+}]);
 
-app.controller('deleteCtrl', function deleteCtrl() {
+app.controller('deleteCtrl', [ '$http', '$routeParams', '$state', function deleteCtrl() {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
 	vm.message = "Delete Your Blog";
-});
+    vm.blog = {};
+    vm.id = $routeParams.blogid;
+    readOneBlog($http, vm.id)
+    	.success(function(data) {
+    		vm.blog = data;
+    		vm.message = "Blog Found!"
+    })
+    .error(function(e) {
+    	vm.message = "Could not get blog with id: " + vm.id;
+    })
+
+    vm.onSubmit = function() {
+    	var data = vm.blog;
+    	data.blogTitle = userForm.blogTitle.value;
+    	data.blogText = userForm.blogTitle.value;
+
+    	deleteOneBlog($http, vm.id)
+    		.success(function(data) {
+    			vm.message = "Blog Updated!";
+    			$state.go('bloglist');
+    		})
+    		.error(function(e) {
+    			vm.message = "Could not update blog with id: " + vm.id;
+    		});
+    }
+
+}]);
 
 /* REST Functions */
 function getAllBlogs($http) {
