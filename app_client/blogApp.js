@@ -93,8 +93,8 @@ app.controller('editCtrl', function editCtrl($http, $reqParams) {
 	    	console.log(e);
 		});
 
-	vm.blogText = blogData.blogText;
-	vm.blogTitle = blogData.blogTitle;	
+    vm.blogText = blogData.blogText;
+    vm.blogTitle = blogData.blogTitle;	
 
     vm.onSubmit = function() {
 
