@@ -37,7 +37,7 @@ app.controller('homeCtrl', function homeCtrl() {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
 	vm.message = "Welcome to my Blog Site";
-}) ;
+});
 
 app.controller('listCtrl', function listCtrl($http) {
 	var vm = this;
@@ -77,7 +77,7 @@ app.controller('addCtrl', function addCtrl($http) {
         };
 });
 
-app.controller('editCtrl', [ '$http', '$routeParams', '$state', function editCtrl($http, $reqParams) {
+app.controller('editCtrl', [ '$http', '$routeParams', function editCtrl($http, $routeParams) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
@@ -93,7 +93,7 @@ app.controller('editCtrl', [ '$http', '$routeParams', '$state', function editCtr
     	vm.message = "Could not get blog with id: " + vm.id;
     })
 
-    vm.submit = function() {
+    vm.onSubmit = function() {
     	var data = vm.blog;
     	data.blogTitle = userForm.blogTitle.value;
     	data.blogText = userForm.blogTitle.value;
@@ -101,7 +101,7 @@ app.controller('editCtrl', [ '$http', '$routeParams', '$state', function editCtr
     	updateOneBlog($http, vm.id, data)
     		.success(function(data) {
     			vm.message = "Blog Updated!";
-    			$state.go('bloglist');
+    			//$state.go('bloglist');
     		})
     		.error(function(e) {
     			vm.message = "Could not update blog with id: " + vm.id;
@@ -110,7 +110,7 @@ app.controller('editCtrl', [ '$http', '$routeParams', '$state', function editCtr
     
 }]);
 
-app.controller('deleteCtrl', [ '$http', '$routeParams', '$state', function deleteCtrl() {
+app.controller('deleteCtrl', [ '$http', '$routeParams', '$state', function deleteCtrl($http, $routeParams, $state) {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
 	vm.message = "Delete Your Blog";
@@ -147,18 +147,18 @@ function getAllBlogs($http) {
     return $http.get('/api/blog');
 }
 
-function readOneBlog($http, id) {
-    return $http.get('/api/blog/' + id);
+function readOneBlog($http, blogid) {
+    return $http.get('/api/blog/' + blogid);
 }
 
-function updateOneBlog($http, data, id) {
-    return $http.put('/api/blog/' + id , data);
+function updateOneBlog($http, data, blogid) {
+    return $http.put('/api/blog/' + blogid , data);
 }
 
 function addOneBlog($http, data) {
     return $http.post('/api/blog', data);
 }
 
-function deleteOneBlog($http, id) {
-	return $http.delete('/api/blog/' + id);
+function deleteOneBlog($http, blogid) {
+	return $http.delete('/api/blog/' + blogid);
 }
