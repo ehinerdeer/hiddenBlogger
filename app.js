@@ -1,4 +1,4 @@
-require('dotenv').load();
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,8 +6,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var bodyParser = require('body-parser');
-require('./app_api/auth/passport')
+require('./app_api/common/auth/passport');
 require('./app_api/models/db');
+var Blog = require('./app_api/models/blog');
+var Users = require('./app_api/models/users');
 var routesApi = require('./app_api/routes/index');
 
 var app = express();
