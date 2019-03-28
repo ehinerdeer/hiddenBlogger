@@ -1,6 +1,6 @@
 /* Start of blogApp */
 var app = angular.module('blogApp', ['ngRoute']);
-
+/* this is a test */
 /* Route Provider */
 app.config(function($routeProvider) {
 	$routeProvider
