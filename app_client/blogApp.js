@@ -54,7 +54,7 @@ app.controller('listCtrl', function listCtrl($http) {
 	});
 });
 
-app.controller('addCtrl', function addCtrl($http) {
+app.controller('addCtrl',[ '$http', '$location', function addCtrl($http, $location) {
     var vm = this;
     vm.blog = {};
     vm.title = "Eric Hinerdeer Blog Site";
@@ -70,14 +70,15 @@ app.controller('addCtrl', function addCtrl($http) {
 	addOneBlog($http, data)
 		.success(function(data) {
 		    console.log(data);
+		    $location.path('/bloglist').replace();
 		})
 		.error(function(e) {
 		    console.log(e);
 		});
         };
-});
+}]);
 
-app.controller('editCtrl', [ '$http', '$routeParams', function editCtrl($http, $routeParams) {
+app.controller('editCtrl', [ '$http', '$routeParams', '$location', function editCtrl($http, $routeParams, $location) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
@@ -87,21 +88,20 @@ app.controller('editCtrl', [ '$http', '$routeParams', function editCtrl($http, $
     readOneBlog($http, vm.id)
     	.success(function(data) {
     		vm.blog = data;
-    		vm.message = "Blog Found!"
     })
     .error(function(e) {
     	vm.message = "Could not get blog with id: " + vm.id;
     })
 
     vm.onSubmit = function() {
-    	var data = vm.blog;
+    	var data = {};
     	data.blogTitle = userForm.blogTitle.value;
-    	data.blogText = userForm.blogTitle.value;
+    	data.blogText = userForm.blogText.value;
 
-    	updateOneBlog($http, vm.id, data)
+    	updateOneBlog($http, data, vm.id)
     		.success(function(data) {
-    			vm.message = "Blog Updated!";
-    			//$state.go('bloglist');
+    		    vm.message = "Blog Updated!";
+    		    $location.path('/bloglist').replace();
     		})
     		.error(function(e) {
     			vm.message = "Could not update blog with id: " + vm.id;
@@ -110,16 +110,16 @@ app.controller('editCtrl', [ '$http', '$routeParams', function editCtrl($http, $
     
 }]);
 
-app.controller('deleteCtrl', [ '$http', '$routeParams', '$state', function deleteCtrl($http, $routeParams, $state) {
-	var vm = this;
-	vm.title = "Eric Hinerdeer Blog Site";
-	vm.message = "Delete Your Blog";
+app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', function deleteCtrl($http, $routeParams, $location) {
+    var vm = this;
+    vm.title = "Eric Hinerdeer Blog Site";
+    vm.message = "Delete Your Blog";
     vm.blog = {};
     vm.id = $routeParams.blogid;
     readOneBlog($http, vm.id)
     	.success(function(data) {
     		vm.blog = data;
-    		vm.message = "Blog Found!"
+    		vm.message = "Are you sure you wish to delete this blog?"
     })
     .error(function(e) {
     	vm.message = "Could not get blog with id: " + vm.id;
@@ -127,13 +127,11 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$state', function delet
 
     vm.onSubmit = function() {
     	var data = vm.blog;
-    	data.blogTitle = userForm.blogTitle.value;
-    	data.blogText = userForm.blogTitle.value;
 
     	deleteOneBlog($http, vm.id)
     		.success(function(data) {
-    			vm.message = "Blog Updated!";
-    			$state.go('bloglist');
+    		    vm.message = "Blog Deleted Successfully!";
+    		    $location.path('/bloglist').replace();
     		})
     		.error(function(e) {
     			vm.message = "Could not update blog with id: " + vm.id;
@@ -160,5 +158,5 @@ function addOneBlog($http, data) {
 }
 
 function deleteOneBlog($http, blogid) {
-	return $http.delete('/api/blog/' + blogid);
+    return $http.delete('/api/blog/' + blogid);
 }
