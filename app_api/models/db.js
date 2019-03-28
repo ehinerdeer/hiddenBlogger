@@ -45,3 +45,4 @@ process.on('SIGTERM', function() {
 
 //Bring in Schema
 require('./blog');
+require('./users');

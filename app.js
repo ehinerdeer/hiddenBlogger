@@ -1,9 +1,12 @@
+require('dotenv').load();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var passport = require('passport');
 var bodyParser = require('body-parser');
+require('./app_api/auth/passport')
 require('./app_api/models/db');
 var routesApi = require('./app_api/routes/index');
 
@@ -20,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
+app.use(passport.initialize());
 
 app.use('/api', routesApi);
 

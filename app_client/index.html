@@ -12,15 +12,9 @@
 </head>
 <body>
     <!-- Navigation -->  
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="#/">My Blog</a>
-    <div class="collapse navbar-collapse">
-        <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#/bloglist">Blog List</a>
-        <a class="nav-item nav-link active" href="#/blogadd">Add Blog</a>
-        </div>
-    </div>
-    </nav>
+<div ng-Controller="Navigation Controller">
+    <navigation></navigation>
+</div>
 
     <!--Angular Templates -->
     <script type="text/ng-template" id="pages/home.html">
