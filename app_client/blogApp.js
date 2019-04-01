@@ -305,13 +305,13 @@ function readOneBlog($http, blogid) {
 }
 
 function updateOneBlog($http, data, blogid) {
-    return $http.put('/api/blog/' + blogid , data);
+    return $http.put('/api/blog/' + blogid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
 
 function addOneBlog($http, data) {
-    return $http.post('/api/blog', data);
+    return $http.post('/api/blog', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
 
 function deleteOneBlog($http, blogid) {
-    return $http.delete('/api/blog/' + blogid);
+    return $http.delete('/api/blog/' + blogid, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
