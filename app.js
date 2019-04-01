@@ -8,8 +8,7 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 require('./app_api/common/auth/passport');
 require('./app_api/models/db');
-var Blog = require('./app_api/models/blog');
-var Users = require('./app_api/models/users');
+
 var routesApi = require('./app_api/routes/index');
 
 var app = express();

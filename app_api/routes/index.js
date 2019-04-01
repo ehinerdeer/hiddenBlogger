@@ -6,13 +6,14 @@ var auth = jwt({
   userProperty: 'payload'
 });
 var ctrlBlog = require('../controller/blog');
-var ctrlAuth = require('../controllers/authentication');
+var ctrlAuth = require('../controller/authentication');
 
 router.get('/blog', ctrlBlog.blogList);
 router.post('/blog', auth, ctrlBlog.addOne);
 router.get('/blog/:blogid', ctrlBlog.readOne);
 router.put('/blog/:blogid', auth, ctrlBlog.editOne);
 router.delete('/blog/:blogid', auth, ctrlBlog.deleteOne);
+
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
