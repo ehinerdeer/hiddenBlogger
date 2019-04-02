@@ -29,7 +29,7 @@
     		<img src="./images/profile.jpeg" id="profile-img" alt="My profile" />
     		<h5>Eric Hinerdeer</h5>
     		<hr/>
-    		<ul>Qualifications:
+    		<ul>My Experience:
     			<li>NodeJS</li>
     			<li>HTML</li>
     			<li>CSS</li>
@@ -44,6 +44,9 @@
     		<p>Feel free to sign up and add a blog or two. I just ask no profanity or spam as I will be showing this to people as part of a portfolio. Thanks! </p>
     	</div>
 	</div>
+	<footer>
+	  <p>2019 &copy What's A Hinerdeer Design</p>
+	</footer>
     </script>
 
     <script type="text/ng-template" id="pages/bloglist.html">
@@ -104,8 +107,9 @@
 			<textarea class="form-control" name="blogText" rows="5" type="text"></textarea>
 			</label>
 
-			<div class="text-right">
+			<div>
 				<input class="btn btn-success" value="Submit" type="submit">
+				<a href="#/bloglist" class="nav-link text-primary" > Cancel </a>
 			</div>
 		</form>
 	      </div>
@@ -128,8 +132,11 @@
 		Blog Text
 	      </label>
 	      <textarea class="form-control" id="blogText"  name="blogText" rows="5" value="">{{vm.blog.blogText}}</textarea>
-          <input type="submit" class="btn btn-success" value="Save">
-            </div>
+	      <div>
+              <input type="submit" class="btn btn-success" value="Save">
+	      <a href="#/bloglist" class="nav-link text-primary"> Cancel </a>
+	      </div>
+	      </div>
           </form>
       </div>
     </script>
@@ -151,8 +158,11 @@
 		Blog Text
 	      </label>
 	      <textarea class="form-control" name="blogText" rows="5" value="" readonly>{{vm.blog.blogText}}</textarea>
+	  <div>
           <input type="submit" class="btn btn-danger" value="Delete">
-            </div>
+	  <a href="#/bloglist" class="nav-link text-primary"> Cancel </a>
+	  </div>
+	  </div>
           </form>
       </div>
     </script>
