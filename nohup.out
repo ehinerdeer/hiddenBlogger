@@ -1,0 +1,104 @@
+
+> blogger@0.0.0 start /home/bitnami/lab6
+> node ./bin/www
+
+Mongoose is Connected to mongodb://blog:blog@localhost:27017/tasks
+[0mGET / [32m200 [0m6.849 ms - 6722[0m
+[0mGET /nav/navigation.js [32m200 [0m4.607 ms - 739[0m
+[0mGET /lib/angular-route.min.js [32m200 [0m4.578 ms - 3884[0m
+[0mGET /lib/bootstrap/js/bootstrap.min.js [32m200 [0m4.588 ms - 51039[0m
+[0mGET /lib/stylesheets/style.css [32m200 [0m6.676 ms - 806[0m
+[0mGET /lib/angular-ui-router.min.js [32m200 [0m7.474 ms - 19546[0m
+[0mGET /blogApp.js [32m200 [0m0.442 ms - 9074[0m
+[0mGET /lib/bootstrap/css/bootstrap.min.css [32m200 [0m7.383 ms - 140936[0m
+[0mGET /nav/navigation.html [32m200 [0m0.495 ms - 684[0m
+Getting blog list
+[ { _id: 5c92ba9d8b20c2102fab1e06,
+    blogTitle: 'logged in',
+    blogText: 'editting post',
+    createdDate: 2019-03-20T22:11:41.296Z,
+    __v: 0 },
+  { _id: 5c9960f35fac9b14e7e2cf2f,
+    blogTitle: 'editing test',
+    blogText: 'with no hup turned on',
+    createdDate: 2019-03-25T23:14:59.317Z,
+    __v: 0 },
+  { _id: 5c9cc365adca41483ffa646f,
+    blogTitle: 'Adding',
+    blogText: 'redirect test',
+    createdDate: 2019-03-28T12:51:49.612Z,
+    __v: 0 },
+  { _id: 5ca37bba3ef75e29e41cb4db,
+    blogTitle: 'logged in',
+    blogText: 'testing add',
+    createdDate: 2019-04-02T15:11:54.679Z,
+    __v: 0 } ]
+[0mGET /api/blog [32m200 [0m21.667 ms - 527[0m
+[0mPOST /api/login [33m401 [0m31.499 ms - 33[0m
+[0mPOST /api/login [32m200 [0m17.716 ms - 257[0m
+Getting blog list
+[ { _id: 5c92ba9d8b20c2102fab1e06,
+    blogTitle: 'logged in',
+    blogText: 'editting post',
+    createdDate: 2019-03-20T22:11:41.296Z,
+    __v: 0 },
+  { _id: 5c9960f35fac9b14e7e2cf2f,
+    blogTitle: 'editing test',
+    blogText: 'with no hup turned on',
+    createdDate: 2019-03-25T23:14:59.317Z,
+    __v: 0 },
+  { _id: 5c9cc365adca41483ffa646f,
+    blogTitle: 'Adding',
+    blogText: 'redirect test',
+    createdDate: 2019-03-28T12:51:49.612Z,
+    __v: 0 },
+  { _id: 5ca37bba3ef75e29e41cb4db,
+    blogTitle: 'logged in',
+    blogText: 'testing add',
+    createdDate: 2019-04-02T15:11:54.679Z,
+    __v: 0 } ]
+[0mGET /api/blog [36m304 [0m3.833 ms - -[0m
+Getting blog list
+[ { _id: 5c92ba9d8b20c2102fab1e06,
+    blogTitle: 'logged in',
+    blogText: 'editting post',
+    createdDate: 2019-03-20T22:11:41.296Z,
+    __v: 0 },
+  { _id: 5c9960f35fac9b14e7e2cf2f,
+    blogTitle: 'editing test',
+    blogText: 'with no hup turned on',
+    createdDate: 2019-03-25T23:14:59.317Z,
+    __v: 0 },
+  { _id: 5c9cc365adca41483ffa646f,
+    blogTitle: 'Adding',
+    blogText: 'redirect test',
+    createdDate: 2019-03-28T12:51:49.612Z,
+    __v: 0 },
+  { _id: 5ca37bba3ef75e29e41cb4db,
+    blogTitle: 'logged in',
+    blogText: 'testing add',
+    createdDate: 2019-04-02T15:11:54.679Z,
+    __v: 0 } ]
+[0mGET /api/blog [36m304 [0m4.435 ms - -[0m
+Getting blog list
+[ { _id: 5c92ba9d8b20c2102fab1e06,
+    blogTitle: 'logged in',
+    blogText: 'editting post',
+    createdDate: 2019-03-20T22:11:41.296Z,
+    __v: 0 },
+  { _id: 5c9960f35fac9b14e7e2cf2f,
+    blogTitle: 'editing test',
+    blogText: 'with no hup turned on',
+    createdDate: 2019-03-25T23:14:59.317Z,
+    __v: 0 },
+  { _id: 5c9cc365adca41483ffa646f,
+    blogTitle: 'Adding',
+    blogText: 'redirect test',
+    createdDate: 2019-03-28T12:51:49.612Z,
+    __v: 0 },
+  { _id: 5ca37bba3ef75e29e41cb4db,
+    blogTitle: 'logged in',
+    blogText: 'testing add',
+    createdDate: 2019-04-02T15:11:54.679Z,
+    __v: 0 } ]
+[0mGET /api/blog [36m304 [0m2.937 ms - -[0m

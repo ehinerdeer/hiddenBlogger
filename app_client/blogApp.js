@@ -240,7 +240,7 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentica
       password : ""
     };
 
-    vm.returnPage = $location.search().page || '/';
+    vm.returnPage = $location.search().page || '/bloglist';
 
     vm.onSubmit = function () {
       vm.formError = "";
@@ -279,7 +279,7 @@ app.controller('RegisterController', [ '$http', '$location', 'authentication', f
       password : ""
     };
     
-    vm.returnPage = $location.search().page || '/';
+    vm.returnPage = $location.search().page || '/bloglist';
     
     vm.onSubmit = function () {
       vm.formError = "";
