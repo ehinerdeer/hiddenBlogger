@@ -13,6 +13,7 @@
 <body>
     <!-- Navigation -->  
 <div ng-Controller="NavigationController">
+	<img src="./images/pencil.png" width="50px" style="display: inline;"/>
     <navigation></navigation>
 </div>
 
@@ -21,6 +22,25 @@
     	<p></p>
     	<h1>{{vm.title}}</h1>
     	<h4>{{vm.message}}</h4>
+    	<div id="left">
+    		<img src="./images/profile.jpeg" alt="My profile" />
+    		<h5>Eric Hinerdeer</h5>
+    		<hr/>
+    		<ul>Qualifications:
+    			<li>NodeJS</li>
+    			<li>HTML</li>
+    			<li>CSS</li>
+    			<li>AngularJS</li>
+    			<li>REST API</li>
+    			<li>Java / C++</li>
+    		</ul>
+    	</div>
+    	<div id="right">
+    		<p>My name is Eric. Currently I am a student at Millersville University. I created this blog site as a project in my class CSCI 406. It is using a MEAN Stack and a REST API to function. It was built from the ground up by me, using the book "Getting MEAN with Angular and NodeJS".</p>
+    		<br />
+    		<p>Feel free to sign up and add a blog or two. I just ask no profanity or spam as I will be showing this to people as part of a portfolio. Thanks! </p>
+    	</div>
+
     </script>
 
     <script type="text/ng-template" id="pages/bloglist.html">
