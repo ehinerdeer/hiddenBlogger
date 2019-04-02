@@ -94,16 +94,16 @@ app.config(function($routeProvider) {
 			controller: 'deleteCtrl',
 			controllerAs: 'vm'
 		})
-        .when('/login' , {
-            templateUrl: 'pages/login.html',
-            controller: 'LoginController',
-            controllerAs: 'vm'
-        })
-        .when ('/register' , {
-            templateUrl: 'pages/register.html',
-            controller: 'RegisterController',
-            controllerAs: 'vm'
-        })
+                .when('/login' , {
+                        templateUrl: 'pages/login.html',
+		        controller: 'LoginController',
+		        controllerAs: 'vm'
+		})
+                .when ('/register' , {
+		        templateUrl: 'pages/register.html',
+		        controller: 'RegisterController',
+		        controllerAs: 'vm'
+		})
 		.otherwise({redirectTo: '/'});
 });
 
@@ -133,7 +133,7 @@ app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http,
 	});
 }]);
 
-app.controller('addCtrl',[ '$http', '$location', function addCtrl($http, $location) {
+app.controller('addCtrl',[ '$http', '$location','authentication', function addCtrl($http, $location, authentication) {
     var vm = this;
     vm.blog = {};
     vm.title = "Eric Hinerdeer Blog Site";
@@ -146,7 +146,7 @@ app.controller('addCtrl',[ '$http', '$location', function addCtrl($http, $locati
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
 	
-	addOneBlog($http, data)
+	addOneBlog($http, data, authentication)
 		.success(function(data) {
 		    console.log(data);
 		    $location.path('/bloglist').replace();
@@ -181,7 +181,7 @@ app.controller('editCtrl', [ '$http', '$routeParams', '$location', 'authenticati
     	data.blogTitle = userForm.blogTitle.value;
     	data.blogText = userForm.blogText.value;
 
-    	updateOneBlog($http, data, vm.id)
+    	updateOneBlog($http, data, vm.id, authentication)
     		.success(function(data) {
     		    vm.message = "Blog Updated!";
     		    $location.path('/bloglist').replace();
@@ -216,7 +216,7 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentica
     vm.onSubmit = function() {
     	var data = vm.blog;
 
-    	deleteOneBlog($http, vm.id)
+    	deleteOneBlog($http, vm.id, authentication)
     		.success(function(data) {
     		    vm.message = "Blog Deleted Successfully!";
     		    $location.path('/bloglist').replace();
@@ -233,7 +233,7 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentica
     var vm = this;
 
     vm.title = "Welcome!";
-    vm.message = "Sign in to Eric's Blog"
+     vm.message = "Sign in to Eric's Blog";
 
     vm.credentials = {
       email : "",
@@ -267,11 +267,11 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentica
     };
  }]);
 
-app.controller('RegisterController', [ '$http', '$location', 'authentication', function RegisterController($htttp, $location, authentication) {
+app.controller('RegisterController', [ '$http', '$location', 'authentication', function RegisterController($http, $location, authentication) {
     var vm = this;
     
-    vm.title: "Registration";
-    vm.message: "Create a New Account"
+    vm.title = "Registration";
+    vm.message = "Create a New Account";
     
     vm.credentials = {
       name : "",
@@ -314,14 +314,14 @@ function readOneBlog($http, blogid) {
     return $http.get('/api/blog/' + blogid);
 }
 
-function updateOneBlog($http, data, blogid) {
+function updateOneBlog($http, data, blogid, authentication) {
     return $http.put('/api/blog/' + blogid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
 
-function addOneBlog($http, data) {
+function addOneBlog($http, data, authentication) {
     return $http.post('/api/blog', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
 
-function deleteOneBlog($http, blogid) {
+function deleteOneBlog($http, blogid, authentication) {
     return $http.delete('/api/blog/' + blogid, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
