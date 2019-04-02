@@ -232,9 +232,8 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentica
  app.controller('LoginController', [ '$http', '$location', 'authentication', function LoginController($htttp, $location, authentication) {
     var vm = this;
 
-    vm.pageHeader = {
-      title: 'Sign in to Blogger'
-    };
+    vm.title = "Welcome!";
+    vm.message = "Sign in to Eric's Blog"
 
     vm.credentials = {
       email : "",
@@ -271,9 +270,8 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentica
 app.controller('RegisterController', [ '$http', '$location', 'authentication', function RegisterController($htttp, $location, authentication) {
     var vm = this;
     
-    vm.pageHeader = {
-      title: 'Create a new Blooger account'
-    };
+    vm.title: "Registration";
+    vm.message: "Create a New Account"
     
     vm.credentials = {
       name : "",
@@ -298,8 +296,7 @@ app.controller('RegisterController', [ '$http', '$location', 'authentication', f
       authentication
         .register(vm.credentials)
         .error(function(err){
-          vm.formError = "Error registering. Try again with a different email address."
-          //vm.formError = err;
+          vm.formError = "Error registering. Try again with a different email address.";
         })
         .then(function(){
           $location.search('page', null); 
