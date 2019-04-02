@@ -114,11 +114,15 @@ app.controller('homeCtrl', function homeCtrl() {
 	vm.message = "Welcome to my Blog Site";
 });
 
-app.controller('listCtrl', function listCtrl($http) {
+app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http, authentication) {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
         vm.message = "Blog List";
 
+        vm.isLoggedIn = function() {
+	    return authentication.isLoggedIn();
+        }
+    
         getAllBlogs($http)
         .success(function(data) {
 	    vm.blogs = data;
@@ -127,7 +131,7 @@ app.controller('listCtrl', function listCtrl($http) {
         .error(function(e) {
 	    vm.message = "Could not get Blog List";
 	});
-});
+}]);
 
 app.controller('addCtrl',[ '$http', '$location', function addCtrl($http, $location) {
     var vm = this;
@@ -153,13 +157,17 @@ app.controller('addCtrl',[ '$http', '$location', function addCtrl($http, $locati
         };
 }]);
 
-app.controller('editCtrl', [ '$http', '$routeParams', '$location', function editCtrl($http, $routeParams, $location) {
+app.controller('editCtrl', [ '$http', '$routeParams', '$location', 'authentication', function editCtrl($http, $routeParams, $location, authentication) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
     vm.blog = {};
     vm.id = $routeParams.blogid;
 
+    vm.isLoggedIn = function() {
+	return authentication.isLoggedIn();
+    }
+    
     readOneBlog($http, vm.id)
     	.success(function(data) {
     		vm.blog = data;
@@ -185,12 +193,17 @@ app.controller('editCtrl', [ '$http', '$routeParams', '$location', function edit
     
 }]);
 
-app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', function deleteCtrl($http, $routeParams, $location) {
+app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentication', function deleteCtrl($http, $routeParams, $location, authentication) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Delete Your Blog";
     vm.blog = {};
     vm.id = $routeParams.blogid;
+
+    vm.isLoggedIn = function() {
+	return authentication.isLoggedIn();
+    }
+
     readOneBlog($http, vm.id)
     	.success(function(data) {
     		vm.blog = data;
