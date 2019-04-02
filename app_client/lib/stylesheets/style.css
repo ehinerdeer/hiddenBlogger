@@ -1,14 +1,13 @@
 body {
-  padding: 50px;
   margin-top: 20px;
-  font: 14px "Georgia", Helvetica, Arial, sans-serif;
+  font: 14px Georgia, Helvetica, Arial, sans-serif;
+  padding: 40px;
+  background-color: #fffafa;
 }
-
 
 p {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
-
 
 navigation {
     margin-bottom: 20px;
@@ -26,12 +25,31 @@ h1, h4 {
     margin-right: auto;
 }
 
+#content {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
 #left {
-width: 25%;
-float:left;
+    width: 30%;
+    float:left;
+    overflow: auto;
+    text-align: center;
+}
+
+#left ul {
+    text-align: left;  
 }
 
 #right {
-  width:73%;
-  margin-left: 1%;
+  width:63%;
+  margin-left: 5%;
+  overflow: auto;
+}
+
+#profile-img {
+    width: 90%;  
+    text-align: center;
 }
