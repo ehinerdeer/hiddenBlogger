@@ -43,12 +43,13 @@ app.service('authentication', authentication);
             return false;
           }
         };
-
+	var userEmail = ""
         var currentUser = function() {
           if(isLoggedIn()){
             var token = getToken();
             var payload = JSON.parse($window.atob(token.split('.')[1]));
-            return {
+	      userEmail = payload.email;  
+	      return {
               email : payload.email,
               name : payload.name
             };
@@ -94,20 +95,20 @@ app.config(function($routeProvider) {
 			controller: 'deleteCtrl',
 			controllerAs: 'vm'
 		})
-    .when('/myblog' , {
-      templateUrl: 'pages/myblog.html',
-      controller: 'myBlogCtrl',
-      controllerAs: 'vm'
-    })
-    .when('/login' , {
-      templateUrl: 'pages/login.html',
-		  controller: 'LoginController',
-		  controllerAs: 'vm'
+	        .when('/myBlog' , {
+                        templateUrl: 'pages/myBlog.html',
+                        controller: 'myBlogCtrl',
+                        controllerAs: 'vm'
+                })
+                .when('/login' , {
+                        templateUrl: 'pages/login.html',
+		        controller: 'LoginController',
+		        controllerAs: 'vm'
 		})
-    .when ('/register' , {
-		  templateUrl: 'pages/register.html',
-		  controller: 'RegisterController',
-		  controllerAs: 'vm'
+                .when ('/register' , {
+		        templateUrl: 'pages/register.html',
+		        controller: 'RegisterController',
+		        controllerAs: 'vm'
 		})
 		.otherwise({redirectTo: '/'});
 });
@@ -128,14 +129,14 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
     vm.message = "Error Finding Blogs";
   })
 
-  if(blogs) {
+  if(vm.blogs) {
     var i = 0;
-    blogs.foreach(blog) {
-      if(blog.email == authentication.currentUser().email) {
+      angular.forEach(vm.blogs, function(blog) {
+      if(blog.email == authentication.userEmail) {
         userBlogs[i] = blog;
         i++;
       }
-    }
+      });
   } else {
     vm.message = "You have no blogs to display";
   }
@@ -157,7 +158,8 @@ app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http,
         vm.isLoggedIn = function() {
 	    return authentication.isLoggedIn();
         }
-    
+
+        
         getAllBlogs($http)
         .success(function(data) {
 	         vm.blogs = data;
@@ -166,6 +168,7 @@ app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http,
         .error(function(e) {
 	         vm.message = "Could not get Blog List";
 	});
+        
 }]);
 
 app.controller('addCtrl',[ '$http', '$location','authentication', function addCtrl($http, $location, authentication) {
@@ -180,7 +183,7 @@ app.controller('addCtrl',[ '$http', '$location','authentication', function addCt
 	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
-  data.email = authentication.currentUser().email;
+        data.email = authentication.currentUser().email;
 	
 	addOneBlog($http, data, authentication)
 		.success(function(data) {
