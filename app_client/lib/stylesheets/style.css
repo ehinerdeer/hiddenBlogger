@@ -34,7 +34,7 @@ h1, h4 {
 }
 
 #left {
-    width: 30%;
+    width: 25%;
     float:left;
     overflow: auto;
     text-align: center;
@@ -45,7 +45,7 @@ h1, h4 {
 }
 
 #right {
-  width:63%;
+  width:68%;
   margin-left: 5%;
   overflow: auto;
 }
@@ -54,8 +54,6 @@ h1, h4 {
     width: 90%;  
     text-align: center;
 }
-
-
 
 .stickyfooter {
   position: fixed;
