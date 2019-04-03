@@ -1,7 +1,6 @@
 body {
   margin-top: 20px;
   font: 14px Georgia, Helvetica, Arial, sans-serif;
-  padding: 40px;
   background-color: #fffafa;
 }
 
@@ -55,8 +54,9 @@ h1, h4 {
 }
 
 .stickyfooter {
-  position: absolute;
+  position: fixed;
+  left: 0;
   bottom: 0;
   width: 100%;
-  padding: 20px;
+  text-align: center;
 }
