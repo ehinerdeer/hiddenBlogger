@@ -6,7 +6,8 @@ var blogschema = new mongoose.Schema({
     createdDate: {
 	type: Date,
 	"default": Date.now
-    }
+    },
+    email: { type: String }
 });
 
 mongoose.model('myblog' , blogschema);

@@ -94,18 +94,53 @@ app.config(function($routeProvider) {
 			controller: 'deleteCtrl',
 			controllerAs: 'vm'
 		})
-                .when('/login' , {
-                        templateUrl: 'pages/login.html',
-		        controller: 'LoginController',
-		        controllerAs: 'vm'
+    .when('/myblog' , {
+      templateUrl: 'pages/myblog.html',
+      controller: 'myBlogCtrl',
+      controllerAs: 'vm'
+    })
+    .when('/login' , {
+      templateUrl: 'pages/login.html',
+		  controller: 'LoginController',
+		  controllerAs: 'vm'
 		})
-                .when ('/register' , {
-		        templateUrl: 'pages/register.html',
-		        controller: 'RegisterController',
-		        controllerAs: 'vm'
+    .when ('/register' , {
+		  templateUrl: 'pages/register.html',
+		  controller: 'RegisterController',
+		  controllerAs: 'vm'
 		})
 		.otherwise({redirectTo: '/'});
 });
+
+/* Testing My Blog Controller */
+app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($http, authentication) {
+  var vm = this;
+  vm.title = "There Are Your Blogs";
+  vm.message = "Add, Edit or Delete Here";
+  vm.blogs = {};
+  vm.userBlogs = {};
+
+  getAllBlogs($http)
+  .success(function(data) {
+    vm.blogs = data;
+  })
+  .error(function(e) {
+    vm.message = "Error Finding Blogs";
+  })
+
+  if(blogs) {
+    var i = 0;
+    blogs.foreach(blog) {
+      if(blog.email == authentication.currentUser().email) {
+        userBlogs[i] = blog;
+        i++;
+      }
+    }
+  } else {
+    vm.message = "You have no blogs to display";
+  }
+
+}]);
 
 /* Blog Controllers */
 app.controller('homeCtrl', function homeCtrl() {
@@ -125,11 +160,11 @@ app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http,
     
         getAllBlogs($http)
         .success(function(data) {
-	    vm.blogs = data;
-	    vm.message = "Found Blogs!";
+	         vm.blogs = data;
+	         vm.message = "Found Blogs!";
 	})
         .error(function(e) {
-	    vm.message = "Could not get Blog List";
+	         vm.message = "Could not get Blog List";
 	});
 }]);
 
@@ -145,6 +180,7 @@ app.controller('addCtrl',[ '$http', '$location','authentication', function addCt
 	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
+  data.email = authentication.currentUser().email;
 	
 	addOneBlog($http, data, authentication)
 		.success(function(data) {
