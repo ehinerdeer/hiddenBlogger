@@ -43,12 +43,11 @@ app.service('authentication', authentication);
             return false;
           }
         };
-	var userEmail = ""
+
         var currentUser = function() {
           if(isLoggedIn()){
             var token = getToken();
-            var payload = JSON.parse($window.atob(token.split('.')[1]));
-	      userEmail = payload.email;  
+            var payload = JSON.parse($window.atob(token.split('.')[1]));  
 	      return {
               email : payload.email,
               name : payload.name
@@ -95,20 +94,20 @@ app.config(function($routeProvider) {
 			controller: 'deleteCtrl',
 			controllerAs: 'vm'
 		})
-	        .when('/myBlog' , {
-                        templateUrl: 'pages/myBlog.html',
-                        controller: 'myBlogCtrl',
-                        controllerAs: 'vm'
-                })
-                .when('/login' , {
-                        templateUrl: 'pages/login.html',
-		        controller: 'LoginController',
-		        controllerAs: 'vm'
+	  .when('/myBlog' , {
+      templateUrl: 'pages/myBlog.html',
+      controller: 'myBlogCtrl',
+      controllerAs: 'vm'
+    })
+    .when('/login' , {
+      templateUrl: 'pages/login.html',
+		  controller: 'LoginController',
+		  controllerAs: 'vm'
 		})
-                .when ('/register' , {
-		        templateUrl: 'pages/register.html',
-		        controller: 'RegisterController',
-		        controllerAs: 'vm'
+    .when ('/register' , {
+		  templateUrl: 'pages/register.html',
+		  controller: 'RegisterController',
+		  controllerAs: 'vm'
 		})
 		.otherwise({redirectTo: '/'});
 });
@@ -116,7 +115,7 @@ app.config(function($routeProvider) {
 /* Testing My Blog Controller */
 app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($http, authentication) {
   var vm = this;
-  vm.title = "There Are Your Blogs";
+  vm.title = "These Are Your Blogs";
   vm.message = "Add, Edit or Delete Here";
   vm.blogs = {};
   vm.userBlogs = {};
@@ -124,15 +123,10 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
   getAllBlogs($http)
   .success(function(data) {
     vm.blogs = data;
-  })
-  .error(function(e) {
-    vm.message = "Error Finding Blogs";
-  })
-
-  if(vm.blogs) {
+    if(vm.blogs) {
     var i = 0;
       angular.forEach(vm.blogs, function(blog) {
-      if(blog.email == authentication.userEmail) {
+      if(blog.email == authentication.currentUser().email) {
         userBlogs[i] = blog;
         i++;
       }
@@ -140,6 +134,12 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
   } else {
     vm.message = "You have no blogs to display";
   }
+  })
+  .error(function(e) {
+    vm.message = "Error Finding Blogs";
+  });
+
+  
 
 }]);
 
@@ -183,7 +183,7 @@ app.controller('addCtrl',[ '$http', '$location','authentication', function addCt
 	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
-        data.email = authentication.currentUser().email;
+  data.email = authentication.currentUser().email;
 	
 	addOneBlog($http, data, authentication)
 		.success(function(data) {
