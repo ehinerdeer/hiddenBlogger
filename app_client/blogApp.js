@@ -127,12 +127,12 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
     var i = 0;
       angular.forEach(vm.blogs, function(blog) {
       if(blog.email == authentication.currentUser().email) {
-        userBlogs[i] = blog;
+        vm.userBlogs[i] = blog;
         i++;
       }
       });
   } else {
-    vm.message = "You have no blogs to display";
+    vm.message = "You have no blogs to display. Add one above!";
   }
   })
   .error(function(e) {
