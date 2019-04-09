@@ -153,7 +153,7 @@ app.controller('homeCtrl', function homeCtrl() {
 app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http, authentication) {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
-        vm.message = "Blog List";
+    vm.message = "Blog List";
 
         vm.isLoggedIn = function() {
 	    return authentication.isLoggedIn();
