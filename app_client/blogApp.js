@@ -94,20 +94,20 @@ app.config(function($routeProvider) {
 			controller: 'deleteCtrl',
 			controllerAs: 'vm'
 		})
-	  .when('/myBlog' , {
-      templateUrl: 'pages/myBlog.html',
-      controller: 'myBlogCtrl',
-      controllerAs: 'vm'
-    })
-    .when('/login' , {
-      templateUrl: 'pages/login.html',
-		  controller: 'LoginController',
-		  controllerAs: 'vm'
+	    .when('/myBlog' , {
+      		templateUrl: 'pages/myBlog.html',
+      		controller: 'myBlogCtrl',
+      		controllerAs: 'vm'
+    	})
+    	.when('/login' , {
+      		templateUrl: 'pages/login.html',
+		    controller: 'LoginController',
+		    controllerAs: 'vm'
 		})
-    .when ('/register' , {
-		  templateUrl: 'pages/register.html',
-		  controller: 'RegisterController',
-		  controllerAs: 'vm'
+    	.when ('/register' , {
+		    templateUrl: 'pages/register.html',
+		    controller: 'RegisterController',
+		    controllerAs: 'vm'
 		})
 		.otherwise({redirectTo: '/'});
 });
@@ -183,7 +183,7 @@ app.controller('addCtrl',[ '$http', '$location','authentication', function addCt
 	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
-  data.email = authentication.currentUser().email;
+    data.email = currentUser().email;
 	
 	addOneBlog($http, data, authentication)
 		.success(function(data) {
