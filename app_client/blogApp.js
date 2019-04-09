@@ -177,13 +177,18 @@ app.controller('addCtrl',[ '$http', '$location','authentication', function addCt
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Add A Blog";
 
+    var currentEmail = function() {
+        var payload = JSON.parse($window.atob(token.split('.')[1]));  
+	    return payload.email;
+        };
+
     vm.onSubmit = function() {
 
 	var data = vm.blog;
 	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
-    data.email = currentUser().email;
+    data.email = currentEmail();
 	
 	addOneBlog($http, data, authentication)
 		.success(function(data) {
@@ -194,6 +199,8 @@ app.controller('addCtrl',[ '$http', '$location','authentication', function addCt
 		    console.log(e);
 		});
         };
+
+
 }]);
 
 app.controller('editCtrl', [ '$http', '$routeParams', '$location', 'authentication', function editCtrl($http, $routeParams, $location, authentication) {
