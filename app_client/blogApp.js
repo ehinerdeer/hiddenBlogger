@@ -186,6 +186,11 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
     	}
     	
     } 
+
+    $scope.formatDate = function(date) {
+    	var dateOut = new Date(date);
+    	return dateOut;
+    }
 }]);
 
 app.controller('addCtrl',[ '$http', '$location','authentication', function addCtrl($http, $location, authentication) {
