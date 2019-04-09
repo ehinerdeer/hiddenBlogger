@@ -174,14 +174,8 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
 	    vm.message = "Could not get Blog List";
 	});
 
-    $scope.isCurrentUser = function() {
-    	var isUser = false;
-    	angular.forEach(vm.blogs, function(blog) {
-    		if(blog.email == authentication.currentUser().email){
-    			isUser = true;
-    		}
-    	})
-    	return isUser;
+    $scope.isCurrentUser = function(blog) {
+    	return authentication.currentUser().email == blog.email;
     }
 
         
