@@ -171,7 +171,7 @@ app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http,
         
 }]);
 
-app.controller('addCtrl',[ '$http', '$location','authentication', function addCtrl($http, $location, authentication) {
+app.controller('addCtrl',[ '$window' , '$http', '$location','authentication', function addCtrl($window, $http, $location, authentication) {
     var vm = this;
     vm.blog = {};
     vm.title = "Eric Hinerdeer Blog Site";
