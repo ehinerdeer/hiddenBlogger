@@ -120,6 +120,10 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
   vm.blogs = {};
   vm.userBlogs = {};
 
+  vm.isLoggedIn = function() {
+	return authentication.isLoggedIn();
+  }
+
   getAllBlogs($http)
   .success(function(data) {
     vm.blogs = data;
@@ -156,7 +160,7 @@ app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http,
     vm.message = "Blog List";
 
         vm.isLoggedIn = function() {
-	    return authentication.isLoggedIn();
+	    	return authentication.isLoggedIn();
         }
 
         
