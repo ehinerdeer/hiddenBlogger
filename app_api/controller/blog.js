@@ -47,6 +47,7 @@ module.exports.addOne = function(req, res) {
 	.create({
 	    blogTitle: req.body.blogTitle,
 	    blogText: req.body.blogText,
+	    name: req.body.name,
 	    email : req.body.email
 	},
 	    function(err, blog) {
