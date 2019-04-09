@@ -175,7 +175,12 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
 	});
 
     $scope.isCurrentUser = function(blog) {
-    	return authentication.currentUser().email == blog.email;
+    	if(isLoggedIn()){
+    		return authentication.currentUser().email == blog.email;
+    	} else {
+    		return false;
+    	}
+    	
     }
 
         
