@@ -165,7 +165,7 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
 	    return authentication.isLoggedIn();
     }
 
-    if(isLoggedIn()){
+    if(vm.isLoggedIn()){
     	vm.currentEmail = authentication.currentUser().email;
     }
  
@@ -179,7 +179,7 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
 	});
 
     $scope.isCurrentUser = function(blog) {
-    	if(isLoggedIn()){
+    	if(vm.isLoggedIn()){
     		return authentication.currentUser().email == blog.email;
     	} else {
     		return false;
