@@ -159,14 +159,14 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
 	vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Blog List";
     vm.blogs = {};
-    vm.currentEmail = "";
+    vm.currentName = "";
 
     vm.isLoggedIn = function(blog) {
 	    return authentication.isLoggedIn();
     }
 
     if(vm.isLoggedIn()){
-    	vm.currentEmail = authentication.currentUser().email;
+    	vm.currentName = authentication.currentUser().name;
     }
  
     getAllBlogs($http)
@@ -202,6 +202,7 @@ app.controller('addCtrl',[ '$http', '$location','authentication', function addCt
 	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
+    data.name = authentication.currentUser().name;
     data.email = authentication.currentUser().email;
 	
 	addOneBlog($http, data, authentication)

@@ -34,6 +34,7 @@ var buildBlogList = function(req, res, results) {
 	    blogTitle : obj.blogTitle,
 	    blogText : obj.blogText,
 	    createdDate : obj.createdDate,
+	    name: obj.name,
 	    email: obj.email
 	});
     });
