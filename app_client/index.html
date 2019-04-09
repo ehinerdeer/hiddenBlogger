@@ -296,9 +296,9 @@
     </p>
         </div>
         <div class="card-footer">
-        <p class="card-text" style="font-size: .6em">
-      Date: {{ blog.createdDate }}  Published By: {{ blog.name }}
-    </p>
+        <p ng-bind="formatDate(blog.createdDate) | date: 'MM/dd/yyyy' " class="card-text" style="font-size: .6em"></p>
+        <p class="card-text" style="font-size: .6em">Published By: {{ blog.name }}</p>
+    
     <ul class="nav justify-content-end">
       <li class="nav-item">
         <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/blogedit/{{blog.blogid}}">Edit</a>
