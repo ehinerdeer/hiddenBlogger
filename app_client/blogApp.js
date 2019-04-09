@@ -159,12 +159,16 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
 	vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Blog List";
     vm.blogs = {};
-    vm.currentEmail = authentication.currentUser().email;
+    vm.currentEmail = "";
 
     vm.isLoggedIn = function(blog) {
 	    return authentication.isLoggedIn();
     }
-        
+
+    if(isLoggedIn()){
+    	vm.currentEmail = authentication.currentUser().email;
+    }
+ 
     getAllBlogs($http)
     .success(function(data) {
 	    vm.blogs = data;
