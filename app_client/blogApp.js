@@ -113,7 +113,7 @@ app.config(function($routeProvider) {
 });
 
 /* Testing My Blog Controller */
-app.controller('myBlogCtrl' , ['$window', '$http', 'authentication', function myBlogCtrl($window, $http, authentication) {
+app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($http, authentication) {
   var vm = this;
   vm.title = "These Are Your Blogs";
   vm.message = "Add, Edit or Delete Here";
@@ -171,16 +171,11 @@ app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http,
         
 }]);
 
-app.controller('addCtrl',[ '$window' , '$http', '$location','authentication', function addCtrl($window, $http, $location, authentication) {
+app.controller('addCtrl',[ '$http', '$location','authentication', function addCtrl($http, $location, authentication) {
     var vm = this;
     vm.blog = {};
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Add A Blog";
-
-    var currentEmail = function() {
-        var payload = JSON.parse($window.atob(token.split('.')[1]));  
-	    return payload.email;
-        };
 
     vm.onSubmit = function() {
 
@@ -188,7 +183,7 @@ app.controller('addCtrl',[ '$window' , '$http', '$location','authentication', fu
 	
 	data.blogTitle = userForm.blogTitle.value;
 	data.blogText = userForm.blogText.value;
-    data.email = currentEmail();
+    data.email = authentication.currentUser().email;
 	
 	addOneBlog($http, data, authentication)
 		.success(function(data) {
