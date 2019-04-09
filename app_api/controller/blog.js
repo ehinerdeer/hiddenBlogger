@@ -44,7 +44,8 @@ module.exports.addOne = function(req, res) {
     blogSch
 	.create({
 	    blogTitle: req.body.blogTitle,
-	    blogText: req.body.blogText
+	    blogText: req.body.blogText,
+	    email : req.body.email
 	},
 	    function(err, blog) {
 		if(err) {

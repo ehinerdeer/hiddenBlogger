@@ -5,7 +5,7 @@ var blogschema = new mongoose.Schema({
     blogText: { type: String, required: true },
     createdDate: {
 	type: Date,
-	"default": Date.now
+	"default": Date.now / 1000
     },
     email: { type: String }
 });
