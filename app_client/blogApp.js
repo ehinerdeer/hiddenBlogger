@@ -124,11 +124,9 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
   .success(function(data) {
     vm.blogs = data;
     if(vm.blogs) {
-    var i = 0;
       angular.forEach(vm.blogs, function(blog) {
       if(blog.email == authentication.currentUser().email) {
-        vm.userBlogs[i] = blog;
-        i++;
+        vm.userBlogs.push(blog);
       }
       });
   } else {
