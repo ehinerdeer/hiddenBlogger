@@ -22,6 +22,6 @@ app.controller('NavigationController', ['$location', 'authentication', function 
     }
     vm.logout = function() {
       authentication.logout();
-	$location.path('/').replace();
+	    $location.path('/').replace();
     };
 }]);

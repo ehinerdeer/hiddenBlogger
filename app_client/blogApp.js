@@ -154,24 +154,36 @@ app.controller('homeCtrl', function homeCtrl() {
 	vm.message = "Welcome to my Blog Site";
 });
 
-app.controller('listCtrl',[ '$http', 'authentication',  function listCtrl($http, authentication) {
+app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCtrl($scope, $http, authentication) {
 	var vm = this;
 	vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Blog List";
+    vm.blogs = {};
+    vm.currentEmail = authentication.currentUser().email;
 
-        vm.isLoggedIn = function() {
-	    	return authentication.isLoggedIn();
-        }
-
+    vm.isLoggedIn = function(blog) {
+	    return authentication.isLoggedIn();
+    }
         
-        getAllBlogs($http)
-        .success(function(data) {
-	         vm.blogs = data;
-	         vm.message = "Found Blogs!";
+    getAllBlogs($http)
+    .success(function(data) {
+	    vm.blogs = data;
+	    vm.message = "Found Blogs!";
 	})
-        .error(function(e) {
-	         vm.message = "Could not get Blog List";
+    .error(function(e) {
+	    vm.message = "Could not get Blog List";
 	});
+
+    $scope.isCurrentUser = function() {
+    	var isUser = false;
+    	angular.forEach(vm.blogs, function(blog) {
+    		if(blog.email == authentication.currentUser().email){
+    			isUser = true;
+    		}
+    	})
+    	return isUser;
+    }
+
         
 }]);
 
@@ -246,7 +258,7 @@ app.controller('deleteCtrl', [ '$http', '$routeParams', '$location', 'authentica
     vm.id = $routeParams.blogid;
 
     vm.isLoggedIn = function() {
-	return authentication.isLoggedIn();
+		return authentication.isLoggedIn();
     }
 
     readOneBlog($http, vm.id)
