@@ -113,7 +113,7 @@ app.config(function($routeProvider) {
 });
 
 /* Testing My Blog Controller */
-app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($http, authentication) {
+app.controller('myBlogCtrl' , ['$window', '$http', 'authentication', function myBlogCtrl($window, $http, authentication) {
   var vm = this;
   vm.title = "These Are Your Blogs";
   vm.message = "Add, Edit or Delete Here";
