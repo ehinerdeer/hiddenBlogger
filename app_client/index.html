@@ -77,7 +77,7 @@
 	      </div>
 	      <div class="card-footer">
         <p class="card-text" style="font-size: .6em">
-		  Date: <label ng-bind="formatDate(blog.createdDate) | blog.createdDate:'MM/dd/yyyy'"></label>   Published By: {{ blog.name }}
+		  Date: {{ blog.createdDate }}    Published By: {{ blog.name }}
 		</p>
 		<ul class="nav justify-content-end">
 		  <li class="nav-item">
@@ -297,7 +297,7 @@
         </div>
         <div class="card-footer">
         <p class="card-text" style="font-size: .6em">
-      Date: <label ng-bind="formatDate(blog.createdDate) | date:'MM/dd/yyyy'"></label>   Published By: {{ blog.name }}
+      Date: {{ blog.createdDate }}  Published By: {{ blog.name }}
     </p>
     <ul class="nav justify-content-end">
       <li class="nav-item">
