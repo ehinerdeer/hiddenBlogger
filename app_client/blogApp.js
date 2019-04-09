@@ -185,14 +185,7 @@ app.controller('listCtrl',[ '$scope','$http', 'authentication',  function listCt
     		return false;
     	}
     	
-    }
-
-    vm.month = vm.blogs.createdDate.getMonth() + 1;
-    vm.day = vm.blogs.creadtedDate.getDate();
-    vm.year = vm.blogs.creadtedDate.getFullYear();
-    vm.hours = vm.blogs.createdDate.getHours();
-    vm.minutes = vm.blogs.createdDate.getMinutes();
-        
+    } 
 }]);
 
 app.controller('addCtrl',[ '$http', '$location','authentication', function addCtrl($http, $location, authentication) {
