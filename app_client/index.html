@@ -79,6 +79,11 @@
         <p class="card-text" style="font-size: .6em">
 		  Date: {{ blog.createdDate }}    Published By: {{ blog.name }}
 		</p>
+    <p>
+      <li class="nav-item">
+      <a ng-show="vm.isLoggedIn() && isCurrentUser(blog)" class="nav-link text-success" href="#/comments/{{blog.blogid}}">Add Comment</a>
+      </li>
+    </p>
 		<ul class="nav justify-content-end">
 		  <li class="nav-item">
 		  <a ng-show="vm.isLoggedIn() && isCurrentUser(blog)" class="nav-link text-success" href="#/blogedit/{{blog.blogid}}">Edit</a>
