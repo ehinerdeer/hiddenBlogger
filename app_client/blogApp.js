@@ -196,7 +196,7 @@ app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authenti
 app.controller('commentsList', [ '$scope','$http', '$routeParams', '$location', 'authentication', function commentsList($scope, $http, $routeParams, $location, authentication) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
-    vm.message = "Edit Your Blog";
+    vm.message = "Comment Page";
     vm.blog = {};
     vm.id = $routeParams.blogid;
 
