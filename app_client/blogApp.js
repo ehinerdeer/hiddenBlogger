@@ -156,7 +156,7 @@ app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authenti
     vm.message = "Add Your Comment";
     vm.blog = {};
     vm.id = $routeParams.blogid;
-    vm.commentArray = {};
+    vm.commentArray = [];
 
     vm.isLoggedIn = function() {
       return authentication.isLoggedIn();
