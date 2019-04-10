@@ -118,7 +118,7 @@ app.config(function($routeProvider) {
       	templateUrl: 'pages/viewComments.html',
       	controller: 'commentsList',
       	controllerAs: 'vm'
-      }
+      })
 		.otherwise({redirectTo: '/'});
 });
 
