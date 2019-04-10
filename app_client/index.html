@@ -80,12 +80,14 @@
 		  Date: {{ blog.createdDate }}    Published By: {{ blog.name }}
 		</p>
     <p>
+    <ul>
       <li class="nav-item" style="font-size: .8em">
       <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/comments/{{blog.blogid}}">Add Comment</a>
       </li>
       <li class="nav-item" style="font-size: .8em">
       <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/viewcomments/{{blog.blogid}}">View Comments</a>
       </li>
+    </ul>
     </p>
 		<ul class="nav justify-content-end">
 		  <li class="nav-item">
@@ -306,7 +308,14 @@
         <div class="card-footer">
         <p ng-bind="formatDate(blog.createdDate) | date: 'MM/dd/yyyy' " class="card-text" style="font-size: .6em"></p>
         <p class="card-text" style="font-size: .6em">Published By: {{ blog.name }}</p>
-    
+    <ul>
+      <li class="nav-item" style="font-size: .8em">
+      <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/comments/{{blog.blogid}}">Add Comment</a>
+      </li>
+      <li class="nav-item" style="font-size: .8em">
+      <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/viewcomments/{{blog.blogid}}">View Comments</a>
+      </li>
+    </ul>
     <ul class="nav justify-content-end">
       <li class="nav-item">
         <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/blogedit/{{blog.blogid}}">Edit</a>
