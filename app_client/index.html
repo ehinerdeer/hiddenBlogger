@@ -393,9 +393,10 @@
         </div>
         </div>
     </form>
+    <h4>All Comments</h4>
     <div ng-repeat="comment in vm.blog.comments track by $index">
           <form style="padding: 20px;">
-            <div class="form-group">
+            <div class="form-control">
               <textarea class="form-control" id="comments" name="comments" rows="8" readonly>{{ comment }}</textarea>
             </div>
           </form>
