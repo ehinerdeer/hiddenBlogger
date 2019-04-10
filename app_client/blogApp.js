@@ -212,6 +212,7 @@ app.controller('commentsList', [ '$scope','$http', '$routeParams', '$location', 
     	vm.message = "Could not get blog with id: " + vm.id;
     })
 
+    $scope.comments = new Array();
     $scope.comments = vm.blog.comments;
     
 }]); 
