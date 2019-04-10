@@ -150,13 +150,13 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
 }]);
 
 /* Comments Controller */
-app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authentication', function editCtrl($http, $routeParams, $location, authentication) {
+app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authentication', function commentsCtrl($http, $routeParams, $location, authentication) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Add Your Comment";
     vm.blog = {};
     vm.id = $routeParams.blogid;
-    vm.commentArray = [];
+    vm.commentArray = [{}];
 
     vm.isLoggedIn = function() {
       return authentication.isLoggedIn();
