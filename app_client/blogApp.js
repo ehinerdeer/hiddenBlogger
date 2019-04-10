@@ -114,7 +114,7 @@ app.config(function($routeProvider) {
         controller: 'commentsCtrl',
         controllerAs: 'vm'
       })
-      .when('/viewcomments/:blogid') , {
+      .when('/viewcomments/:blogid' , {
       	templateUrl: 'pages/viewComments.html',
       	controller: 'commentsList',
       	controllerAs: 'vm'
