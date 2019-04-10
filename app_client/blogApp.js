@@ -193,7 +193,7 @@ app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authenti
     
 }]);
 
-app.controller('commentsList', [ '$http', '$routeParams', '$location', 'authentication', function commentsList($http, $routeParams, $location, authentication) {
+app.controller('commentsList', [ '$scope','$http', '$routeParams', '$location', 'authentication', function commentsList($scope, $http, $routeParams, $location, authentication) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
@@ -212,7 +212,7 @@ app.controller('commentsList', [ '$http', '$routeParams', '$location', 'authenti
     	vm.message = "Could not get blog with id: " + vm.id;
     })
 
-    vm.comments = vm.blog.comments;
+    $scope.comments = vm.blog.comments;
     
 }]); 
 
