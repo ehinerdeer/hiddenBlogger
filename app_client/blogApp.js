@@ -174,7 +174,7 @@ app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authenti
     vm.onSubmit = function() {
       var data = {};
       vm.commentArray.push(userForm.comments.value);
-      data.comments = vm.commentsArray;
+      data.comments = vm.commentArray;
 
       addComment($http, data, vm.id, authentication)
         .success(function(data) {
