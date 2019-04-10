@@ -193,7 +193,7 @@ app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authenti
     
 }]);
 
-/* app.controller('commentsList', [ '$http', '$routeParams', '$location', 'authentication', function commentsList($http, $routeParams, $location, authentication) {
+app.controller('commentsList', [ '$http', '$routeParams', '$location', 'authentication', function commentsList($http, $routeParams, $location, authentication) {
     var vm = this;
     vm.title = "Eric Hinerdeer Blog Site";
     vm.message = "Edit Your Blog";
@@ -214,7 +214,7 @@ app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authenti
 
     vm.comments = vm.blog.comments;
     
-}]); */
+}]); 
 
 /* Blog Controllers */
 app.controller('homeCtrl', function homeCtrl() {
