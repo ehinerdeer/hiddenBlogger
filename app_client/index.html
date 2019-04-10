@@ -80,14 +80,14 @@
 		  Date: {{ blog.createdDate }}    Published By: {{ blog.name }}
 		</p>
     <p>
-    <ul>
+      <ul>
       <li class="nav-item" style="font-size: .8em">
       <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/comments/{{blog.blogid}}">Add Comment</a>
       </li>
       <li class="nav-item" style="font-size: .8em">
       <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/viewcomments/{{blog.blogid}}">View Comments</a>
       </li>
-    </ul>
+      <ul>
     </p>
 		<ul class="nav justify-content-end">
 		  <li class="nav-item">
@@ -308,14 +308,7 @@
         <div class="card-footer">
         <p ng-bind="formatDate(blog.createdDate) | date: 'MM/dd/yyyy' " class="card-text" style="font-size: .6em"></p>
         <p class="card-text" style="font-size: .6em">Published By: {{ blog.name }}</p>
-    <ul>
-      <li class="nav-item" style="font-size: .8em">
-      <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/comments/{{blog.blogid}}">Add Comment</a>
-      </li>
-      <li class="nav-item" style="font-size: .8em">
-      <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/viewcomments/{{blog.blogid}}">View Comments</a>
-      </li>
-    </ul>
+    
     <ul class="nav justify-content-end">
       <li class="nav-item">
         <a ng-show="vm.isLoggedIn()" class="nav-link text-success" href="#/blogedit/{{blog.blogid}}">Edit</a>
@@ -387,26 +380,21 @@
       <h4>{{vm.message}}</h4>
       <hr/>
       <div class="card" id="card-style">
-        <div class=" card border-dark">
-          <div class="card-header">
-            <div class="row">
-              <div class="col-sm">
-                {{vm.blog.blogTitle}}
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              {{vm.blog.blogText}}
-            </p>
-          </div>
-          <div class="card-footer">
-            <p class="card-text" style="font-size: .6em">
-              Date: {{ blog.createdDate }}     Published By: {{ blog.name }}
-            </p>
-            </div>
-          </div>
+    <form style="padding: 20px;">
+      <div class="form-group">
+        <label for="blogTitle"  class="text-dark">
+    Blog Title
+        </label>
+        <input class="form-control" id="blogTitle" name="blogTitle" value="{{vm.blog.blogTitle}}" readonly>
+   
+              <label for="blogText" class="text-dark" style="width: 100%;">
+    Blog Text
+        </label>
+        <textarea class="form-control" id="blogText"  name="blogText" rows="5" value="" readonly>{{vm.blog.blogText}}</textarea>
+        <div>
         </div>
+        </div>
+    </form>
     <h4>All Comments</h4>
     <div ng-repeat="comment in vm.blog.comments track by $index">
           <form style="padding: 20px;">
