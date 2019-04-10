@@ -114,6 +114,11 @@ app.config(function($routeProvider) {
         controller: 'commentsCtrl',
         controllerAs: 'vm'
       })
+      .when('/viewcomments/:blogid') , {
+      	templateUrl: 'pages/viewComments.html',
+      	controller: 'commentsList',
+      	controllerAs: 'vm'
+      }
 		.otherwise({redirectTo: '/'});
 });
 
@@ -185,6 +190,29 @@ app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authenti
           vm.message = "Could not update blog with id: " + vm.id;
         });
     }
+    
+}]);
+
+app.controller('commentsList', [ '$http', '$routeParams', '$location', 'authentication', function commentsList($http, $routeParams, $location, authentication) {
+    var vm = this;
+    vm.title = "Eric Hinerdeer Blog Site";
+    vm.message = "Edit Your Blog";
+    vm.blog = {};
+    vm.id = $routeParams.blogid;
+
+    vm.isLoggedIn = function() {
+		return authentication.isLoggedIn();
+    }
+    
+    readOneBlog($http, vm.id)
+    	.success(function(data) {
+    		vm.blog = data;
+    })
+    .error(function(e) {
+    	vm.message = "Could not get blog with id: " + vm.id;
+    })
+
+    vm.comments = vm.blog.comments;
     
 }]);
 
