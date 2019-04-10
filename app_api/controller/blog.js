@@ -35,7 +35,8 @@ var buildBlogList = function(req, res, results) {
 	    blogText : obj.blogText,
 	    createdDate : obj.createdDate,
 	    name: obj.name,
-	    email: obj.email
+	    email: obj.email,
+	    comments: obj.comments
 	});
     });
     return blogs;
@@ -94,6 +95,24 @@ module.exports.editOne = function(req, res) {
 	.findOneAndUpdate(
 	    { _id: req.params.blogid },
 	    { $set: {"blogTitle" : req.body.blogTitle ,"blogText" : req.body.blogText }},
+	
+	    function(err, response) {
+		if(err) {
+		    sendJsonResponse(res, 400, err);
+		} else {
+		    sendJsonResponse(res, 201, response);
+		}
+	    }
+	);
+};
+
+module.exports.addComment = function(req, res) {
+    console.log("Updating Blog Entry (Comment) : " + req.params.blogid);
+    console.log(req.body);
+    blogSch
+	.findOneAndUpdate(
+	    { _id: req.params.blogid },
+	    { $set: { "comments" : req.body.comments }},
 	
 	    function(err, response) {
 		if(err) {

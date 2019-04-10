@@ -109,6 +109,11 @@ app.config(function($routeProvider) {
 		    controller: 'RegisterController',
 		    controllerAs: 'vm'
 		})
+      .when('/comments/:blogid' , {
+        templateUrl: 'pages/addComments.html',
+        controller: 'commentsCtrl',
+        controllerAs: 'vm'
+      })
 		.otherwise({redirectTo: '/'});
 });
 
@@ -142,9 +147,45 @@ app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($h
   .error(function(e) {
     vm.message = "Error Finding Blogs";
   });
+}]);
 
-  
+/* Comments Controller */
+app.controller('commentsCtrl', [ '$http', '$routeParams', '$location', 'authentication', function editCtrl($http, $routeParams, $location, authentication) {
+    var vm = this;
+    vm.title = "Eric Hinerdeer Blog Site";
+    vm.message = "Add Your Comment";
+    vm.blog = {};
+    vm.id = $routeParams.blogid;
+    vm.commentArray = {};
 
+    vm.isLoggedIn = function() {
+      return authentication.isLoggedIn();
+    }
+    
+    readOneBlog($http, vm.id)
+      .success(function(data) {
+        vm.blog = data;
+        vm.commentArray = data.comments;
+    })
+    .error(function(e) {
+      vm.message = "Could not get blog with id: " + vm.id;
+    })
+
+    vm.onSubmit = function() {
+      var data = {};
+      vm.commentsArray.push(userForm.comments.value);
+      data.comments = vm.commentsArray;
+
+      addComment($http, data, vm.id, authentication)
+        .success(function(data) {
+            vm.message = "Blog Updated!";
+            $location.path('/bloglist').replace();
+        })
+        .error(function(e) {
+          vm.message = "Could not update blog with id: " + vm.id;
+        });
+    }
+    
 }]);
 
 /* Blog Controllers */
@@ -380,6 +421,10 @@ function readOneBlog($http, blogid) {
 
 function updateOneBlog($http, data, blogid, authentication) {
     return $http.put('/api/blog/' + blogid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+}
+
+function addComment($http, data, blogid, authentication) {
+    return $http.put('/api/comments/' + blogid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
 
 function addOneBlog($http, data, authentication) {

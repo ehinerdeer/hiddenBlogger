@@ -321,6 +321,48 @@
     </div>
   </div>
     </script>
+
+    <script type="text/ng-template" id="pages/addComments.html">
+      <p></p>
+      <h1>{{vm.title}}</h1>
+      <h4>{{vm.message}}</h4>
+      <hr/>
+      <div class="card" id="card-style">
+    <form ng-Controller="commentsCtrl" style="padding: 20px;">
+      <div class="form-group">
+        <label for="blogTitle"  class="text-dark">
+    Blog Title
+        </label>
+        <input class="form-control" id="blogTitle" name="blogTitle" value="{{vm.blog.blogTitle}}" readonly>
+   
+              <label for="blogText" class="text-dark" style="width: 100%;">
+    Blog Text
+        </label>
+        <textarea class="form-control" id="blogText"  name="blogText" rows="5" value="" readonly>{{vm.blog.blogText}}</textarea>
+        <div>
+        </div>
+        </div>
+    </form>
+          <form name="userForm" ng-Controller="commentsCrtl" ng-submit="vm.onSubmit()" style="padding: 20px;">
+            <div class="form-group">
+              <label for="comments"  class="text-dark">
+                Add Comment
+              </label>
+              <textarea class="form-control" id="comments" name="comments" rows="10" value=""></textarea>
+              <input type="submit" class="btn btn-success" value="Save">
+              <a href="#/bloglist" class="nav-link text-primary"> Cancel </a>
+            </div>
+          </form>
+      </div>
+      <div style="clear:both;"></div>
+      <div class="stickyfooter">
+      <div class="container bg-dark text-light">
+      <div class="row text-center text-xs-center text-sm-center text-md-left">
+        <p> &copy; 2019 What's A Hinerdeer Design </p>
+      </div>
+    </div>
+  </div>
+    </script>
     <div ng-view></div>
     
     <script src="/blogApp.js"></script>

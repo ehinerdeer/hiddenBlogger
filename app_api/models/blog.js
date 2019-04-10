@@ -8,7 +8,8 @@ var blogschema = new mongoose.Schema({
 	"default": Date.now
     },
     name : { type: String },
-    email: { type: String }
+    email: { type: String },
+    comments: [{ type : String }]
 });
 
 mongoose.model('myblog' , blogschema);
