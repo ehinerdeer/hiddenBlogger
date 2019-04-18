@@ -1,56 +1,5 @@
 /* Start of blogApp */
 var app = angular.module('chessApp', ['ngRoute']);
-
-/* Route Provider */
-app.config(function($routeProvider) {
-	$routeProvider
-    	.when('/login' , {
-      		templateUrl: 'pages/login.html',
-		    controller: 'LoginController',
-		    controllerAs: 'vm'
-		})
-    	.when ('/register' , {
-		    templateUrl: 'pages/register.html',
-		    controller: 'RegisterController',
-		    controllerAs: 'vm'
-		})
-      .when('/' , {
-        templateUrl: 'pages/chess.html',
-        controller: 'ChessCtrl',
-        controllerAs: 'vm'
-      })
-		.otherwise({redirectTo: '/'});
-});
-
-/* CHESS GAME CONTROLLER */
-app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
-  var vm = this;
-  vm.title = "Chess";
-  vm.message = "Don't Lose The Queen!";
-}]);
-
-/* REST API Functions */
-function getAllPieces($http) {
-    return $http.get('/api/chess');
-}
-
-function readOnePiece($http, pieceid) {
-    return $http.get('/api/chess/' + pieceid);
-}
-
-function updateOnePiece($http, data, pieceid, authentication) {
-    return $http.put('/api/chess/' + pieceid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
-}
-
-function addOnePiece($http, data, authentication) {
-    return $http.post('/api/chess', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
-}
-
-function deleteOnePiece($http, pieceid, authentication) {
-    return $http.delete('/api/chess/' + blogid, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
-}
-
-
 //*** Authentication Service and Methods **
 app.service('authentication', authentication);
     authentication.$inject = ['$window', '$http'];
@@ -115,6 +64,56 @@ app.service('authentication', authentication);
           currentUser : currentUser
         };
 }
+
+/* Route Provider */
+app.config(function($routeProvider) {
+	$routeProvider
+    	.when('/login' , {
+      		templateUrl: 'pages/login.html',
+		    controller: 'LoginController',
+		    controllerAs: 'vm'
+		})
+    	.when ('/register' , {
+		    templateUrl: 'pages/register.html',
+		    controller: 'RegisterController',
+		    controllerAs: 'vm'
+		})
+      .when('/' , {
+        templateUrl: 'pages/chess.html',
+        controller: 'ChessCtrl',
+        controllerAs: 'vm'
+      })
+		.otherwise({redirectTo: '/'});
+});
+
+/* CHESS GAME CONTROLLER */
+app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
+  var vm = this;
+  vm.title = "Chess";
+  vm.message = "Don't Lose The Queen!";
+}]);
+
+/* REST API Functions */
+function getAllPieces($http) {
+    return $http.get('/api/chess');
+}
+
+function readOnePiece($http, pieceid) {
+    return $http.get('/api/chess/' + pieceid);
+}
+
+function updateOnePiece($http, data, pieceid, authentication) {
+    return $http.put('/api/chess/' + pieceid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+}
+
+function addOnePiece($http, data, authentication) {
+    return $http.post('/api/chess', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+}
+
+function deleteOnePiece($http, pieceid, authentication) {
+    return $http.delete('/api/chess/' + blogid, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+}
+
 
  /* Register and Login Controllers */
  app.controller('LoginController', [ '$http', '$location', 'authentication', function LoginController($htttp, $location, authentication) {
