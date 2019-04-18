@@ -1,4 +1,4 @@
-var app = angular.module('blogApp');
+var app = angular.module('chessApp');
 
 //*** Directives ***
 app.directive('navigation', function() {
