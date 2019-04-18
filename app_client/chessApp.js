@@ -50,7 +50,6 @@ function deleteOnePiece($http, pieceid, authentication) {
     return $http.delete('/api/chess/' + blogid, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
 }
 
-}]);
 
 //*** Authentication Service and Methods **
 app.service('authentication', authentication);
