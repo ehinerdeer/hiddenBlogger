@@ -109,8 +109,22 @@ app.config(function($routeProvider) {
 		    controller: 'RegisterController',
 		    controllerAs: 'vm'
 		})
+      .when('/chess' , {
+        templateUrl: 'pages/chess.html',
+        controller: 'ChessCtrl',
+        controllerAs: 'vm'
+      })
 		.otherwise({redirectTo: '/'});
 });
+
+app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
+  var vm = this;
+  vm.title = "Chess";
+  vm.message = "Don't Lose The Queen!";
+  
+
+
+}]);
 
 /* Testing My Blog Controller */
 app.controller('myBlogCtrl' , ['$http', 'authentication', function myBlogCtrl($http, authentication) {
