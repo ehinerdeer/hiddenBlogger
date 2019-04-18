@@ -91,6 +91,41 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
+  vm.allPieces = {};
+  
+  vm.newGame = function() {
+  
+  getAllPieces($http)
+  .success(function(data) {
+	  vm.allPieces = data;
+  })
+  .error(function(e) {
+	  vm.message = "Error Finding Pieces";
+  });
+  
+  if(vm.allPieces) {
+  angular.forEach(vm.allPieces, function(piece) {
+	deleteOnePiece($http, piece.pieceid);
+  }
+  }
+  vm.whitePieces = [p,p,p,p,p,p,p,p,r,n,b,q,k,b,n,r];
+  vm.blackPieces = [p,p,p,p,p,p,p,p,r,n,b,k,q,b,n,r];
+  
+  let whitePRow = 2;
+  let dataToAdd = {};
+  
+  for(var i = 0; i < 8; i++) {
+	dataToAdd.name = vm.whitePieces[i];
+	dataToAdd.color = "white";
+	dataToAdd.boardPos = [ {
+		x = 2;
+		y = i;
+	}]
+  }
+  
+  } //end newGame function
+  
+  
 }]);
 
 /* REST API Functions */
