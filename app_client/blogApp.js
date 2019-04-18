@@ -121,8 +121,30 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
-  
 
+  vm.newGame = function() {
+  	
+  }
+  
+function getAllPieces($http) {
+    return $http.get('/api/chess');
+}
+
+function readOnePiece($http, pieceid) {
+    return $http.get('/api/chess/' + pieceid);
+}
+
+function updateOnePiece($http, data, pieceid, authentication) {
+    return $http.put('/api/chess/' + pieceid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+}
+
+function addOnePiece($http, data, authentication) {
+    return $http.post('/api/chess', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+}
+
+function deleteOnePiece($http, pieceid, authentication) {
+    return $http.delete('/api/chess/' + blogid, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+}
 
 }]);
 
