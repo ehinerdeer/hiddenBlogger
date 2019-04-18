@@ -1,4 +1,4 @@
-/* Start of blogApp */
+/* Start of chessApp */
 var app = angular.module('chessApp', ['ngRoute']);
 //*** Authentication Service and Methods **
 app.service('authentication', authentication);
@@ -78,11 +78,11 @@ app.config(function($routeProvider) {
 		    controller: 'RegisterController',
 		    controllerAs: 'vm'
 		})
-      .when('/' , {
-        templateUrl: 'pages/chess.html',
-        controller: 'ChessCtrl',
-        controllerAs: 'vm'
-      })
+        .when('/' , {
+			templateUrl: 'pages/chess.html',
+			controller: 'ChessCtrl',
+			controllerAs: 'vm'
+        })
 		.otherwise({redirectTo: '/'});
 });
 
@@ -102,16 +102,16 @@ function readOnePiece($http, pieceid) {
     return $http.get('/api/chess/' + pieceid);
 }
 
-function updateOnePiece($http, data, pieceid, authentication) {
-    return $http.put('/api/chess/' + pieceid , data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+function updateOnePiece($http, data, pieceid) {
+    return $http.put('/api/chess/' + pieceid , data);
 }
 
-function addOnePiece($http, data, authentication) {
-    return $http.post('/api/chess', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+function addOnePiece($http, data) {
+    return $http.post('/api/chess', data);
 }
 
-function deleteOnePiece($http, pieceid, authentication) {
-    return $http.delete('/api/chess/' + blogid, { headers: { Authorization: 'Bearer '+ authentication.getToken() }});
+function deleteOnePiece($http, pieceid) {
+    return $http.delete('/api/chess/' + pieceid);
 }
 
 
