@@ -113,8 +113,8 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   }
   
   /* Array to help create new pieces */
-  vm.whitePieces = [p,p,p,p,p,p,p,p,r,n,b,q,k,b,n,r];
-  vm.blackPieces = [p,p,p,p,p,p,p,p,r,n,b,k,q,b,n,r];
+  vm.whitePieces = ["p","p","p","p","p","p","p","p","r","n","b","q","k","b","n","r"];
+  vm.blackPieces = ["p","p","p","p","p","p","p","p","r","n","b","k","q","b","n","r"];
   
   var dataToAdd = {};
   
