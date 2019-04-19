@@ -20,21 +20,21 @@
 	<script type="text/ng-template" id="pages/chess.html">
 	<h1>{{vm.title}}</h1>
 	<h4>{{vm.message}}</h4>
-	
-	<table style = "width: 75%; text-align: center;">
-	<button ng-onclick="vm.newGame">New Game</button>
-	<tr>
-	<div ng-repeat="bpiece in vm.blackMinors">
-	<td>{{bpiece.name}}</td>
+	<div ng-Controller="ChessCtrl">
+		<table style = "width: 75%; text-align: center;">
+			<button ng-onclick="vm.newGame">New Game</button>
+			<tr>
+				<div ng-repeat="bpiece in vm.blackMinors">
+					<td>{{bpiece.name}}</td>
+				</div>
+			</tr>
+			<tr>
+				<div ng-repeat="bpawn in vm.blackPawns">
+					<td>{{bpawn.name}}</td>
+				</div>
+			</tr>
+		</table>
 	</div>
-	</tr>
-	<tr>
-	<div ng-repeat="bpawn in vm.blackPawns">
-	<td>{{bpawn.name}}</td>
-	</div>
-	</tr>
-	</table>
-	
 	</script>
 	
     <div ng-view></div>
