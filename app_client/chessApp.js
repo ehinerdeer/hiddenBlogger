@@ -92,9 +92,11 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
   vm.allPieces = {};
+  vm.newGameData = {};
   
   vm.newGame = function() {
   
+  //check if DB is empty (should probably only be empty on first ever game)
   getAllPieces($http)
   .success(function(data) {
 	  vm.allPieces = data;
@@ -103,28 +105,88 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	  vm.message = "Error Finding Pieces";
   });
   
+  /* If Pieces in data base erase database to begin new game */
   if(vm.allPieces) {
   angular.forEach(vm.allPieces, function(piece) {
 	deleteOnePiece($http, piece.pieceid);
   }
   }
+  
+  /* Array to help create new pieces */
   vm.whitePieces = [p,p,p,p,p,p,p,p,r,n,b,q,k,b,n,r];
   vm.blackPieces = [p,p,p,p,p,p,p,p,r,n,b,k,q,b,n,r];
   
-  let whitePRow = 2;
-  let dataToAdd = {};
+  var dataToAdd = {};
   
+  /* Populate Database with New Pieces */
   for(var i = 0; i < 8; i++) {
+	//adding white pawns
 	dataToAdd.name = vm.whitePieces[i];
 	dataToAdd.color = "white";
 	dataToAdd.boardPos = [ {
-		x = 2;
-		y = i;
-	}]
-  }
+		x = i;
+		y = 2;
+	}];
+	addOnePiece($http, dataToAdd);
+	
+	//adding black pawns
+	dataToAdd.name = vm.blackPieces[i];
+	dataToAdd.color = "black";
+	dataToAdd.boardPos = [ {
+		x = i;
+		y = 7;
+	}];
+	addOnePiece($http, dataToAdd);
+	
+	//adding white pieces
+	dataToAdd.name = vm.whitePieces[i + 7];
+	dataToAdd.color = "white";
+	dataToAdd.boardPos = [ {
+		x = i;
+		y = 1;
+	}];
+	addOnePiece($http, dataToAdd);
+	
+	//adding black pawns
+	dataToAdd.name = vm.blackPieces[i + 7];
+	dataToAdd.color = "black";
+	dataToAdd.boardPos = [ {
+		x = i;
+		y = 8;
+	}];
+	addOnePiece($http, dataToAdd);
+	
+  } // end for loop 
+  
+  /* After DB is populated GET data out again */
+  
+  getAllPieces($http)
+  .success(function(data) {
+	  vm.newGameData = data;
+  })
+  .error(function(e) {
+	  vm.message = "Error Finding Pieces";
+  });
   
   } //end newGame function
   
+  /* Seperate arrays for setting up initial board  (to use ng-repeat easier) */
+  vm.whitePawns = [{}];
+  vm.blackPawns = [{}];
+  vm.whiteMinors = [{}];
+  vm.blackMinors = [{}];
+  
+  angular.forEach(vm.newGameData, function(piece) {
+	  if(newGameData.name === "p" && newGameData.color === "white") {
+		  vm.whitePawns.push(piece);
+	  } else if(newGameData.name === "p" && newGameData.color === "black") {
+		  vm.blackPawns.push(piece);
+	  } else if (newGameData.name != "p" && newGameData.color === "white") {
+		  vm.whiteMinors.push(piece);
+	  } else if (newGameData.name != "p" && newGameData.color === "black") {
+		  vm.blackMinors.push(piece);
+	  }
+  }
   
 }]);
 
