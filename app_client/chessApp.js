@@ -172,10 +172,10 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   } //end newGame function
   
   /* Seperate arrays for setting up initial board  (to use ng-repeat easier) */
-  vm.whitePawns = [{}];
-  vm.blackPawns = [{}];
-  vm.whiteMinors = [{}];
-  vm.blackMinors = [{}];
+  vm.whitePawns = [];
+  vm.blackPawns = [];
+  vm.whiteMinors = [];
+  vm.blackMinors = [];
   
   angular.forEach(vm.newGameData, function(piece) {
 	  if(newGameData.name === "p" && newGameData.color === "white") {
