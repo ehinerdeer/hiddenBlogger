@@ -119,8 +119,9 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   var dataToAdd = {};
   
   /* Populate Database with New Pieces */
-  for(var i = 0; i < 8; i++) {
+  for(let i = 0; i < 8; i++) {
 	//adding white pawns
+	dataToAdd = {};
 	dataToAdd.name = vm.whitePieces[i];
 	dataToAdd.color = "white";
 	dataToAdd.boardPos = [ {
@@ -128,7 +129,7 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	    y : 2
 	}];
 	addOnePiece($http, dataToAdd);
-	
+	dataToAdd = {};
 	//adding black pawns
 	dataToAdd.name = vm.blackPieces[i];
 	dataToAdd.color = "black";
@@ -137,18 +138,18 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	    y : 7
 	}];
 	addOnePiece($http, dataToAdd);
-	
+	dataToAdd = {};
 	//adding white pieces
-	dataToAdd.name = vm.whitePieces[i + 7];
+	dataToAdd.name = vm.whitePieces[i + 8];
 	dataToAdd.color = "white";
 	dataToAdd.boardPos = [ {
 	    x : i,
 	    y : 1
 	}];
 	addOnePiece($http, dataToAdd);
-	
+	dataToAdd = {};
 	//adding black pawns
-	dataToAdd.name = vm.blackPieces[i + 7];
+	dataToAdd.name = vm.blackPieces[i + 8];
 	dataToAdd.color = "black";
 	dataToAdd.boardPos = [ {
 	    x : i,
