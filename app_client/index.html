@@ -22,7 +22,7 @@
 	<h4>{{vm.message}}</h4>
 	<div ng-Controller="ChessCtrl">
 		<table style = "width: 75%; text-align: center;">
-			<button ng-onclick="vm.newGame">New Game</button>
+			<button ng-onclick="vm.newGame()">New Game</button>
 			<tr>
 				<div ng-repeat="bpiece in vm.blackMinors">
 					<td>{{bpiece.name}}</td>
