@@ -186,7 +186,7 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	  } else if (newGameData.name != "p" && newGameData.color === "black") {
 		  vm.blackMinors.push(piece);
 	  }
-  }
+  })
   
 }]);
 
