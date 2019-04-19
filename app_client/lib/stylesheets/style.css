@@ -14,7 +14,12 @@ table tr td {
 	border: 1px solid black;
 	border-collapse: collapse;
 	width: 60px;
+	height: 60px;
 	text-align:center;
+}
+
+.grey {
+    background-color: #bbb;
 }
 
 .stickyfooter {
