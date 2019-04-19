@@ -109,7 +109,7 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   if(vm.allPieces) {
   angular.forEach(vm.allPieces, function(piece) {
 	deleteOnePiece($http, piece.pieceid);
-  }
+  })
   }
   
   /* Array to help create new pieces */
@@ -124,8 +124,8 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	dataToAdd.name = vm.whitePieces[i];
 	dataToAdd.color = "white";
 	dataToAdd.boardPos = [ {
-		x = i;
-		y = 2;
+	    x : i,
+	    y : 2
 	}];
 	addOnePiece($http, dataToAdd);
 	
@@ -133,8 +133,8 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	dataToAdd.name = vm.blackPieces[i];
 	dataToAdd.color = "black";
 	dataToAdd.boardPos = [ {
-		x = i;
-		y = 7;
+	    x : i,
+	    y : 7
 	}];
 	addOnePiece($http, dataToAdd);
 	
@@ -142,8 +142,8 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	dataToAdd.name = vm.whitePieces[i + 7];
 	dataToAdd.color = "white";
 	dataToAdd.boardPos = [ {
-		x = i;
-		y = 1;
+	    x : i,
+	    y : 1
 	}];
 	addOnePiece($http, dataToAdd);
 	
@@ -151,8 +151,8 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	dataToAdd.name = vm.blackPieces[i + 7];
 	dataToAdd.color = "black";
 	dataToAdd.boardPos = [ {
-		x = i;
-		y = 8;
+	    x : i,
+	    y : 8
 	}];
 	addOnePiece($http, dataToAdd);
 	
