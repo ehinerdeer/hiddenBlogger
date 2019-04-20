@@ -100,7 +100,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
   
   $scope.test = [ "X" , "" ];
 
-  vm.Click = function(spaceId) {
+ /* vm.Click = function(spaceId) {
 	  var elem = document.getElementById(spaceId);
 	  if(elem.innerHTML=="X" && vm.clicks==0) {
 		  vm.premove = elem.innerHTML;
@@ -112,13 +112,18 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
 		  vm.clicks--;
 		  vm.premoveNum.innerHTML = "";
 	  }
+  } */
+  
+  vm.onSubmit = function() {
+	  $scope.test[parseInt(form.to)] = $scope.test[parseInt(form.from)];
+	  $scope.test[parseInt(form.from)] = "";
   }
   
+	var strToInt = function() {
+		return 
+	}
 }]);
 
-function getPieceData(piece) {
-	
-}
 
 /* REST API Functions */
 function getAllPieces($http) {

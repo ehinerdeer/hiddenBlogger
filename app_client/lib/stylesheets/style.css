@@ -22,6 +22,21 @@ table tr td {
     background-color: #ccc;
 }
 
+.content{
+	width: 100%;
+}
+
+.left {
+	width: 80%;
+	text-align:center;
+}
+
+.right {
+	width: 15%;
+	margin-left: 5%;
+	text-align: center;
+}
+
 .stickyfooter {
   position: fixed;
   left: 0;
