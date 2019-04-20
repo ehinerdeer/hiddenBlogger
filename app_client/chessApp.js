@@ -87,7 +87,7 @@ app.config(function($routeProvider) {
 });
 
 /* CHESS GAME CONTROLLER */
-app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
+app.controller('ChessCtrl' , ['$http', '$scope' function ChessCtrl($http, $scope) {
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
@@ -97,6 +97,8 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   vm.turn = "white";
   vm.premoveNum = {};
   vm.postmoveNum = {};
+  
+  $scope.test = [ "X" , "" ];
 
   vm.Click = function(spaceId) {
 	  var elem = document.getElementById(spaceId);
