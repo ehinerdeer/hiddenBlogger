@@ -97,7 +97,7 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
   vm.turn = "white";
   vm.premoveNum = {};
   vm.postmoveNum = {};
-  
+
   vm.Click = function(spaceId) {
 	  var elem = document.getElementById(spaceId);
 	  if(elem.innerHTML=="X" && vm.clicks==0) {
@@ -112,9 +112,11 @@ app.controller('ChessCtrl' , ['$http', function ChessCtrl($http) {
 	  }
   }
   
-  
-  
 }]);
+
+function getPieceData(piece) {
+	
+}
 
 /* REST API Functions */
 function getAllPieces($http) {

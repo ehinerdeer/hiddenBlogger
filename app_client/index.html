@@ -20,7 +20,7 @@
 	<script type="text/ng-template" id="pages/chess.html">
 	<h1> {{ vm.title }} </h1>
 	<h4> {{ vm.message }} </h4>
-	<!-- <div ng-Controller="ChessCtrl"> -->
+	<div ng-Controller="ChessCtrl">
 		<table style="width: 75%">
 			<!-- 1-8 -->
 			<tr>
@@ -157,10 +157,10 @@
 			</tr>
 			<!-- 8-8 -->
 			<tr>
-				<td class="grey" id="spA1" ng-click="vm.Click('spA1')">
+				<td class="grey" id="spA1" name="A1" ng-click="vm.Click('spA1')">
 				X
 				</td>
-				<td id="spA2" ng-click="vm.Click('spA2')">
+				<td id="spA2" name="A2" ng-click="vm.Click('spA2')">
 				</td>
 				<td class="grey">
 				</td>
@@ -176,7 +176,7 @@
 				</td>
 			</tr>
 		</table>
-	<!-- </div> -->
+	</div>
 	</script>
 	
     <div ng-view></div>
