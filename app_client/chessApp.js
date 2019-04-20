@@ -115,6 +115,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
   } */
   
   vm.onSubmit = function() {
+	  
 	  $scope.test[parseInt(form.to)] = $scope.test[parseInt(form.from)];
 	  $scope.test[parseInt(form.from)] = "";
   }
