@@ -87,7 +87,7 @@ app.config(function($routeProvider) {
 });
 
 /* CHESS GAME CONTROLLER */
-app.controller('ChessCtrl' , ['$http', '$scope' function ChessCtrl($http, $scope) {
+app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scope) {
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
