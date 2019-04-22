@@ -100,7 +100,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
 
   vm.toDelete = {};
 
-  var deleteDataBase = function() {
+  vm.deleteDataBase = function() {
 
   getAllPieces($http)
     .success(function(data) {
