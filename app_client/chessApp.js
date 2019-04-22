@@ -102,13 +102,34 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
         vm.message = "Didn't Add =(";
       });
   }
-  
-  vm.read = function() {
-
-  }
 
   vm.changeColor = function() {
+    getAllPieces($http).success(function(data) {
+      vm.turn = data[0];
+    }).error(function(e) {
+      vm.message = "Error getting Color";
+    });
 
+    if(vm.turn.length > 0) {
+      if(vm.turn.name === "white") {
+        vm.turn.name = "grey";
+      updateOnePiece($http, vm.turn, pieceid)
+        .success(function(data) {
+          vm.message = "Changed to Grey";
+        }).error(function(e) {
+          vm.message = "Error Changing Color";
+        });
+    } else if(vm.turn.name === "grey") {
+       if(vm.turn.name === "grey") {
+        vm.turn.name = "white";
+      updateOnePiece($http, vm.turn, pieceid)
+        .success(function(data) {
+          vm.message = "Changed to White";
+        }).error(function(e) {
+          vm.message = "Error Changing Color";
+        });
+    }
+    }
   }
   $scope.test = [ "&#9812;" , "" ];
 
