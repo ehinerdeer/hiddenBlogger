@@ -7,7 +7,7 @@ var sendJsonResponse = function(res, status, content) {
 }
 
 module.exports.pieceList = function(req, res) {
-    console.log('Getting blog list');
+    console.log('Getting piece list');
     chessSch
 	.find()
 	.exec(function(err, results) {

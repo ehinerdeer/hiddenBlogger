@@ -110,8 +110,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
       vm.message = "Error getting Color";
     });
 
-  if(vm.turn.length > 0) {
-      if(vm.turn.name === "white") {
+    if(vm.turn.name === "white") {
         vm.turn.name = "grey";
       updateOnePiece($http, vm.turn, vm.turn.pieceid)
         .success(function(data) {
@@ -130,7 +129,6 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
         });
     }
     }
-  }
 }
   $scope.test = [ "&#9812;" , "" ];
 
