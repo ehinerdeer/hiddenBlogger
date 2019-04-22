@@ -87,38 +87,28 @@ app.config(function($routeProvider) {
 });
 
 /* CHESS GAME CONTROLLER */
-app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scope) {
+app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessCtrl($http, $scope, $routeParams) {
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
-  vm.premove = {};
-  vm.postmove = {};
-  vm.clicks = 0;
-  vm.turn = "white";
-  vm.premoveNum = {};
-  vm.postmoveNum = {};
+  vm.turn = {};
+  vm.turn.name = "white";
 
-  vm.toDelete = {};
+  vm.add = function() {
+    addOnePiece($http, vm.turn)
+      .success(function(data) {
+        vm.message = "Added to DB";
+      }).error(function(e) {
+        vm.message = "Didn't Add =(";
+      });
+  }
+  
+  vm.read = function() {
 
-  vm.deleteDataBase = function() {
+  }
 
-  getAllPieces($http)
-    .success(function(data) {
-      vm.toDelete = data;
-    })
-    .error(function(e) {
-      vm.message = "Error finding pieces";
-    });
+  vm.changeColor = function() {
 
-    angular.forEach(vm.toDelete, function(item) {
-      deleteOnePiece($http, item.pieceid)
-        .success(function(data) {
-          console.log("Deleted: " + item.pieceid);
-        })
-        .error(function(e) {
-          console.log(e);
-        });
-    });
   }
   $scope.test = [ "&#9812;" , "" ];
 
@@ -135,12 +125,6 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
 		  vm.premoveNum.innerHTML = "";
 	  }
   } */
-  
-  vm.onSubmit = function() {
-	  
-	  $scope.test[parseInt(form.to)] = $scope.test[parseInt(form.from)];
-	  $scope.test[parseInt(form.from)] = "";
-  }
   
 }]);
 

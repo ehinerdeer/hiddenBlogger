@@ -18,16 +18,16 @@
 
     <!--Angular Templates -->
 	<script type="text/ng-template" id="pages/chess.html">
-	<input ng-click="vm.deleteDataBase()" class="btn btn-success" value="Submit" type="submit">
 	<h1> {{ vm.title }} </h1>
 	<h4> {{ vm.message }} </h4>
+	<input ng-click="vm.add()" class="btn btn-success" value="Submit" type="submit">
 	<div ng-Controller="ChessCtrl">
 		<div class="content">
 			<div class="left">
 		<table style="width: 75%">
 			<!-- 1-8 -->
 			<tr>
-				<td>
+				<td class="">
 				</td>
 				<td class="grey">
 				</td>
