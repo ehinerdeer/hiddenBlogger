@@ -105,7 +105,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
   getAllPieces($http)
     .success(function(data) {
       vm.toDelete = data;
-    });
+    })
     .error(function(e) {
       vm.message = "Error finding pieces";
     })
