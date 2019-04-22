@@ -104,13 +104,14 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
       });
   }
 
-  while(vm.run) {
+  
+  vm.changeColor = function() {
+    while(vm.run) {
     readOnePiece($http, vm.turn.pieceid).success(function(data) {
       vm.turn.name = data.name;
     }).error(function(e) {
       vm.message = "Could not read vm.turn";
     });
-  vm.changeColor = function() {
     getAllPieces($http).success(function(data) {
       vm.turn = data[0];
     }).error(function(e) {
@@ -136,6 +137,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
         });
     }
     }
+    vm.run=false;
   }
 }
   $scope.test = [ "&#9812;" , "" ];
