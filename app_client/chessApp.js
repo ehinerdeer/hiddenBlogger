@@ -108,11 +108,11 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
     })
     .error(function(e) {
       vm.message = "Error finding pieces";
-    })
+    });
 
     angular.forEach(vm.toDelete, function(item) {
       deleteOnePiece($http, item.pieceid);
-    })
+    });
   }
   $scope.test = [ "&#9812;" , "" ];
 
