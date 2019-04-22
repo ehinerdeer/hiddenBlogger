@@ -98,7 +98,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
   vm.premoveNum = {};
   vm.postmoveNum = {};
   
-  $scope.test = [ "X" , "" ];
+  $scope.test = [ "&#9812;" , "" ];
 
  /* vm.Click = function(spaceId) {
 	  var elem = document.getElementById(spaceId);
@@ -120,9 +120,6 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
 	  $scope.test[parseInt(form.from)] = "";
   }
   
-	var strToInt = function() {
-		return 
-	}
 }]);
 
 
