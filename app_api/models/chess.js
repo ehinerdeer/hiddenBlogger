@@ -1,11 +1,7 @@
 var mongoose = require('mongoose');
 
 var chessSch = new mongoose.Schema({
-	name: { type: String },
-	color: { type: String },
-	boardPos: [{ 
-			x: { type: Number },
-			y: { type: Number } }]
+	name: { type: String }
 });
 
 mongoose.model('chess', chessSch);

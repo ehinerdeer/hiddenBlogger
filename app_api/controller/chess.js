@@ -32,9 +32,7 @@ var buildPieceList = function(req, res, results) {
 
 	pieces.push({
 		pieceid: obj._id,
-	    name: obj.name,
-	    color: obj.color,
-	    boardPos: obj.boardPos
+	    name: obj.name
 	});
     });
     return pieces;
@@ -44,9 +42,7 @@ module.exports.addOne = function(req, res) {
     console.log(req.body);
     chessSch
 	.create({
-	    name: req.body.name,
-	    color: req.body.color,
-	    boardPos: req.body.boardPos,
+	    name: req.body.name
 	},
 	    function(err, piece) {
 		if(err) {
@@ -91,7 +87,7 @@ module.exports.editOne = function(req, res) {
     chessSch
 	.findOneAndUpdate(
 	    { _id: req.params.pieceid },
-	    { $set: {"boardPos" : req.body.boardPos }},
+	    { $set: {"name" : req.body.name }},
 	
 	    function(err, response) {
 		if(err) {

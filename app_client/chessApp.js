@@ -97,7 +97,23 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
   vm.turn = "white";
   vm.premoveNum = {};
   vm.postmoveNum = {};
-  
+
+  vm.toDelete = {};
+
+  var deleteDataBase = function() {
+
+  getAllPieces($http)
+    .success(function(data) {
+      vm.toDelete = data;
+    });
+    .error(function(e) {
+      vm.message = "Error finding pieces";
+    })
+
+    angular.forEach(vm.toDelete, function(item) {
+      deleteOnePiece($http, item.pieceid);
+    })
+  }
   $scope.test = [ "&#9812;" , "" ];
 
  /* vm.Click = function(spaceId) {
