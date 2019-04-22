@@ -111,7 +111,13 @@ app.controller('ChessCtrl' , ['$http', '$scope', function ChessCtrl($http, $scop
     });
 
     angular.forEach(vm.toDelete, function(item) {
-      deleteOnePiece($http, item.pieceid);
+      deleteOnePiece($http, item.pieceid)
+        .success(function(data) {
+          console.log("Deleted: " + item.pieceid);
+        })
+        .error(function(e) {
+          console.log(e);
+        });
     });
   }
   $scope.test = [ "&#9812;" , "" ];
