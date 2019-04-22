@@ -92,7 +92,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
   vm.turn = {};
-  vm.turn.name = "white";
+  vm.turn.name = "";
 
   vm.add = function() {
     addOnePiece($http, vm.turn)
