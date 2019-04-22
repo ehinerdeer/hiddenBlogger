@@ -93,6 +93,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
   vm.message = "Don't Lose The Queen!";
   vm.turn = {};
   vm.turn.name = "";
+  vm.run = true;
 
   vm.add = function() {
     addOnePiece($http, vm.turn)
@@ -103,6 +104,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
       });
   }
 
+  while(vm.run) {
+    readOnePiece($http, vm.turn.pieceid).success(function(data) {
+      vm.turn.name = data.name;
+    }).error(function(e) {
+      vm.message = "Could not read vm.turn";
+    });
   vm.changeColor = function() {
     getAllPieces($http).success(function(data) {
       vm.turn = data[0];
@@ -129,6 +136,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
         });
     }
     }
+  }
 }
   $scope.test = [ "&#9812;" , "" ];
 
