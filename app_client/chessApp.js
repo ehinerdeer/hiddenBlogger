@@ -99,7 +99,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   var space = "";
 
   $scope.click = function() {
-  	vm.test1 = vm.test1.html() = "";
+  	vm.test1 = "";
   }
     
 }]);
