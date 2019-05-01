@@ -87,11 +87,11 @@ app.config(function($routeProvider) {
 });
 
 /* CHESS GAME CONTROLLER */
-app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessCtrl($http, $scope, $routeParams) {
+app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl($http, $scope, $document) {
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
-  vm.test1 = angular.element(document.getElementById("A1"));
+  vm.test1 = angular.element($document.getElementById("A1"));
 
   vm.test2 = vm.test1.innerHTML;
     
