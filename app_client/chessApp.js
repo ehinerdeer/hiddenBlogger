@@ -95,8 +95,8 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   vm.test3 = "This is a test";
   var clicks = 0;
 
-  $scope.click = function() {
-  	if(clicks % 2 != 0) {
+  $scope.clickMe = function() {
+  	if(clicks % 2 == 0) {
   		var temp = vm.test3;
   		vm.test2 = temp;
   		vm.test3 = "";
