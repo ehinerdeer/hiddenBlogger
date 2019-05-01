@@ -93,7 +93,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
   vm.message = "Don't Lose The Queen!";
   vm.test1 = angular.element(document.getElementById("A1"));
 
-  vm.test2 = test1.innerHTML;
+  vm.test2 = vm.test1.innerHTML;
     
 }]);
 
