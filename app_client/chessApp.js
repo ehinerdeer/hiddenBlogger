@@ -94,7 +94,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   vm.test1 = angular.element(document.getElementById("A1")); //gets element by id
 
   vm.test2 = ""; // gets innerhtml
-  
+  vm.test3 = "This is a test";
   vm.clicks = 0;
   var space = "";
 
