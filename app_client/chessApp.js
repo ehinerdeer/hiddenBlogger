@@ -91,9 +91,9 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
-  vm.test1 = angular.element($document.getElementById("A1"));
+  vm.test1 = angular.element(document.getElementById("A1"));
 
-  vm.test2 = vm.test1.innerHTML;
+  vm.test2 = vm.test1.html();
     
 }]);
 
