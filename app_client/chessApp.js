@@ -110,12 +110,11 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   }
 
   $scope.saveSquare = function(square) {
-  	vm.test2 = ;
+  	vm.test2 = "";
   }
 
   $scope.moveSquare = function(square) {
   	var temp = vm.test2;
-  	square.
   }
 
   $scope.whichClick = function() {
