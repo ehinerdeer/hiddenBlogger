@@ -92,21 +92,13 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
   vm.test1 = angular.element(document.getElementById("A1")); //gets element by id
-
   vm.test2 = ""; // gets innerhtml
   vm.test3 = "This is a test";
-  var clicks = 0;
-  var space = "";
 
   $scope.click = function() {
-  	if(clicks == 0) {
-  		vm.test3 = "";
-  		clicks++;
-  	} else if(clicks == 1) {
-  		vm.test3 = "This is a test";
-  		clicks--;
-  	}
-  	
+  	var temp = vm.test3;
+  	vm.test2 = temp;
+  	vm.test3 = "";
   }
     
 }]);
