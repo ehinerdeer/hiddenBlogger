@@ -99,7 +99,14 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   var space = "";
 
   $scope.click = function() {
-  	vm.test1 = "";
+  	if(clicks == 0) {
+  		vm.test3 = "";
+  		clicks++;
+  	} else if(clicks == 1) {
+  		vm.test3 = "This is a test";
+  		clicks--;
+  	}
+  	
   }
     
 }]);
