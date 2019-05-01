@@ -93,24 +93,37 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
   vm.message = "Don't Lose The Queen!";
   vm.test2 = ""; // gets innerhtml
   vm.test3 = "This is a test";
-  var clicks = 0;
+  var clicked = false
 
-  $scope.clickMe = function() {
-  	if(clicks % 2 == 0) {
+  $scope.clickMe = function(square) {
+  	if(!clicked) {
   		var temp = vm.test3;
   		vm.test2 = temp;
   		vm.test3 = "";
-  		clicks++;
-    } else {
+  		clicked = true;
+    } else if(clicked){
     	var temp = vm.test2;
     	vm.test3 = temp;
     	vm.test2 = "";
+    	clicked = false;
     }
+  }
+
+  $scope.saveSquare = function(square) {
+  	vm.test2 = ;
+  }
+
+  $scope.moveSquare = function(square) {
+  	var temp = vm.test2;
+  	square.
+  }
+
+  $scope.whichClick = function() {
+  	return clicked;
   }
     
 }]);
-
-
+//comment
 /* REST API Functions */
 function getAllPieces($http) {
     return $http.get('/api/chess');
