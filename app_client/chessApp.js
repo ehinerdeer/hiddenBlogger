@@ -91,71 +91,10 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessC
   var vm = this;
   vm.title = "Chess";
   vm.message = "Don't Lose The Queen!";
-  vm.turn = {};
-  vm.turn.name = "";
-  vm.run = true;
+  vm.test1 = angular.element(document.getElementById("A1"));
 
-  vm.add = function() {
-    addOnePiece($http, vm.turn)
-      .success(function(data) {
-        vm.message = "Added to DB";
-      }).error(function(e) {
-        vm.message = "Didn't Add =(";
-      });
-  }
-
-  
-  vm.changeColor = function() {
-    while(vm.run) {
-    readOnePiece($http, vm.turn.pieceid).success(function(data) {
-      vm.turn.name = data.name;
-    }).error(function(e) {
-      vm.message = "Could not read vm.turn";
-    });
-    getAllPieces($http).success(function(data) {
-      vm.turn = data[0];
-    }).error(function(e) {
-      vm.message = "Error getting Color";
-    });
-
-    if(vm.turn.name === "white") {
-        vm.turn.name = "grey";
-      updateOnePiece($http, vm.turn, vm.turn.pieceid)
-        .success(function(data) {
-          vm.message = "Changed to Grey";
-        }).error(function(e) {
-          vm.message = "Error Changing Color";
-        });
-    } else if(vm.turn.name === "grey") {
-       if(vm.turn.name === "grey") {
-        vm.turn.name = "white";
-      updateOnePiece($http, vm.turn, vm.turn.pieceid)
-        .success(function(data) {
-          vm.message = "Changed to White";
-        }).error(function(e) {
-          vm.message = "Error Changing Color";
-        });
-    }
-    }
-    vm.run=false;
-  }
-}
-  $scope.test = [ "&#9812;" , "" ];
-
- /* vm.Click = function(spaceId) {
-	  var elem = document.getElementById(spaceId);
-	  if(elem.innerHTML=="X" && vm.clicks==0) {
-		  vm.premove = elem.innerHTML;
-		  vm.clicks++;
-		  vm.premoveNum = spaceId;
-	  }
-	  if(elem.innerHTML=="" && vm.clicks==1) {
-		  elem.innerHTML==vm.premove;
-		  vm.clicks--;
-		  vm.premoveNum.innerHTML = "";
-	  }
-  } */
-  
+  vm.test2 = test1.innerHTML;
+    
 }]);
 
 
