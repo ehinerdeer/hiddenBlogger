@@ -95,7 +95,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$document', function ChessCtrl
 
   vm.test2 = ""; // gets innerhtml
   vm.test3 = "This is a test";
-  vm.clicks = 0;
+  var clicks = 0;
   var space = "";
 
   $scope.click = function() {
