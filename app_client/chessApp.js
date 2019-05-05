@@ -129,50 +129,50 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       vm.C2.piece = "";
       vm.C3.piece = "";
       
-      updateOnePiece($http, vm.A1, vm.A1.pieceid).success(function(data) {
+      updateOnePiece($http, vm.A1).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
       });
-      updateOnePiece($http, vm.A2, vm.A2.pieceid).success(function(data) {
-        console.log("Updated: " + data);
-      }).error(function(e) {
-        console.log("Error: " + e);
-      });
-
-      updateOnePiece($http, vm.A3, vm.A3.pieceid).success(function(data) {
-        console.log("Updated: " + data);
-      }).error(function(e) {
-        console.log("Error: " + e);
-      });
-      updateOnePiece($http, vm.B1, vm.B1.pieceid).success(function(data) {
-        console.log("Updated: " + data);
-      }).error(function(e) {
-        console.log("Error: " + e);
-      });
-      updateOnePiece($http, vm.B2, vm.B2.pieceid).success(function(data) {
+      updateOnePiece($http, vm.A2).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
       });
 
-      updateOnePiece($http, vm.B3, vm.B3.pieceid).success(function(data) {
+      updateOnePiece($http, vm.A3).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
       });
-      updateOnePiece($http, vm.C1, vm.C1.pieceid).success(function(data) {
+      updateOnePiece($http, vm.B1).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
       });
-      updateOnePiece($http, vm.C2, vm.C2.pieceid).success(function(data) {
+      updateOnePiece($http, vm.B2).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
       });
 
-      updateOnePiece($http, vm.C3, vm.C3.pieceid).success(function(data) {
+      updateOnePiece($http, vm.B3).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+      updateOnePiece($http, vm.C1).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+      updateOnePiece($http, vm.C2).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+
+      updateOnePiece($http, vm.C3).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
@@ -188,7 +188,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       vm.A1.piece = "O";
       vm.turn = "X";
     }
-    updateOnePiece($http, vm.A1.piece, vm.A1.pieceid).success(function(data) {
+    updateOnePiece($http, vm.A1).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
@@ -204,11 +204,11 @@ function getAllPieces($http) {
 }
 
 function readOnePiece($http, pieceid) {
-    return $http.get('/api/chess/' + pieceid);
+    return $http.get('/api/chess/', pieceid);
 }
 
-function updateOnePiece($http, data, pieceid) {
-    return $http.put('/api/chess/' + pieceid , data);
+function updateOnePiece($http, data) {
+    return $http.put('/api/chess/' , data);
 }
 
 function addOnePiece($http, data) {
@@ -216,7 +216,7 @@ function addOnePiece($http, data) {
 }
 
 function deleteOnePiece($http, pieceid) {
-    return $http.delete('/api/chess/' + pieceid);
+    return $http.delete('/api/chess/', pieceid);
 }
 
 
