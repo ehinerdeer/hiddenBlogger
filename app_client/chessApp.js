@@ -110,7 +110,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       vm.message = "Could not get list";
     });
 
-    if(vm.pieces.length == 0) {
+    if(vm.pieces) {
       vm.A1.piece = "";
       vm.A2.piece = "";
       vm.A3.piece = "";
