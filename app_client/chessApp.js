@@ -93,15 +93,15 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.message = "Don't Lose The Queen!";
   vm.pieces = {};
   
-  vm.A1 = {name: "", piece: ""};
-  vm.A2 = {name: "", piece: ""};
-  vm.A3 = {name: "", piece: ""};
-  vm.B1 = {name: "", piece: ""};
-  vm.B2 = {name: "", piece: ""};
-  vm.B3 = {name: "", piece: ""};
-  vm.C1 = {name: "", piece: ""};
-  vm.C2 = {name: "", piece: ""};
-  vm.C3 = {name: "", piece: ""};
+  vm.A1 = {name: "A1", piece: "", pieceid: "5ccf6b077401225699db7241"};
+  vm.A2 = {name: "A2", piece: "", pieceid: "5ccf6b077401225699db723e"};
+  vm.A3 = {name: "A3", piece: "", pieceid: "5ccf6b077401225699db723f"};
+  vm.B1 = {name: "B1", piece: "", pieceid: "5ccf6b077401225699db7240"};
+  vm.B2 = {name: "B2", piece: "", pieceid: "5ccf6b077401225699db7242"};
+  vm.B3 = {name: "B3", piece: "", pieceid: "5ccf6b077401225699db7243"};
+  vm.C1 = {name: "C1", piece: "", pieceid: "5ccf6b077401225699db7245"};
+  vm.C2 = {name: "C2", piece: "", pieceid: "5ccf6b077401225699db7244"};
+  vm.C3 = {name: "C3", piece: "", pieceid: "5ccf6b077401225699db7246"};
 
   $scope.newGame = function() {
     getAllPieces($http).success(function(data) {
@@ -120,60 +120,57 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       vm.C1.piece = "";
       vm.C2.piece = "";
       vm.C3.piece = "";
-      vm.A1.name = "A1";
-      vm.A2.name = "A2";
-      vm.A3.name = "A3";
-      vm.B1.name = "B1";
-      vm.B2.name = "B2";
-      vm.B3.name = "B3";
-      vm.C1.name = "C1";
-      vm.C2.name = "C2";
-      vm.C3.name = "C3";
-      addOnePiece($http, vm.A1).success(function(data) {
-        console.log(data);
+      
+      updateOnePiece($http, vm.A1, vm.A1.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.A2).success(function(data) {
-        console.log(data);
+      updateOnePiece($http, vm.A2, vm.A2.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.A3).success(function(data) {
-        console.log(data);
+
+      updateOnePiece($http, vm.A3, vm.A3.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.B1).success(function(data) {
-        console.log(data);
+      updateOnePiece($http, vm.B1, vm.B1.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.B2).success(function(data) {
-        console.log(data);
+      updateOnePiece($http, vm.B2, vm.B2.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.B3).success(function(data) {
-        console.log(data);
+
+      updateOnePiece($http, vm.B3, vm.B3.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.C1).success(function(data) {
-        console.log(data);
+      updateOnePiece($http, vm.C1, vm.C1.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.C2).success(function(data) {
-        console.log(data);
+      updateOnePiece($http, vm.C2, vm.C2.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
-      addOnePiece($http, vm.C3).success(function(data) {
-        console.log(data);
+
+      updateOnePiece($http, vm.C3, vm.C3.pieceid).success(function(data) {
+        console.log("Updated: " + data);
       }).error(function(e) {
-        console.log(e);
+        console.log("Error: " + e);
       });
+
+
     }
   }
 
