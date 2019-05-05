@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
 var chessSch = new mongoose.Schema({
-	name: { type: String }
+	name: { type: String },
+	piece: { type: String }
 });
 
-mongoose.model('chess', chessSch);
+mongoose.model('board', chessSch);

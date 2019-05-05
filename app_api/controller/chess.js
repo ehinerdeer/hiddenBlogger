@@ -32,7 +32,8 @@ var buildPieceList = function(req, res, results) {
 
 	pieces.push({
 		pieceid: obj._id,
-	    name: obj.name
+	    name: obj.name,
+	    piece: obj.piece
 	});
     });
     return pieces;
@@ -42,7 +43,8 @@ module.exports.addOne = function(req, res) {
     console.log(req.body);
     chessSch
 	.create({
-	    name: req.body.name
+	    name: req.body.name,
+	    piece: req.body.piece
 	},
 	    function(err, piece) {
 		if(err) {
@@ -87,7 +89,7 @@ module.exports.editOne = function(req, res) {
     chessSch
 	.findOneAndUpdate(
 	    { _id: req.params.pieceid },
-	    { $set: {"name" : req.body.name }},
+	    { $set: {"name" : req.body.name, req.body.piece }},
 	
 	    function(err, response) {
 		if(err) {

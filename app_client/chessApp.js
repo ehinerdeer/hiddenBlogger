@@ -87,75 +87,96 @@ app.config(function($routeProvider) {
 });
 
 /* CHESS GAME CONTROLLER */
-app.controller('ChessCtrl' , ['$http', '$scope', '$routeParams', function ChessCtrl($http, $scope, $routeParams) {
+app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl($http, $scope, $interval) {
   var vm = this;
-  vm.title = "Chess";
+  vm.title = "Tic Tac Toe";
   vm.message = "Don't Lose The Queen!";
-  vm.turn = {};
-  vm.turn.name = "";
-  vm.run = true;
+  vm.pieces = {};
+  
+  vm.A1.piece = "";
+  vm.A2.piece = "";
+  vm.A3.piece = "";
+  vm.B1.piece = "";
+  vm.B2.piece = "";
+  vm.B3.piece = "";
+  vm.C1.piece = "";
+  vm.C2.piece = "";
+  vm.C3.piece = "";
 
-  vm.add = function() {
-    addOnePiece($http, vm.turn)
-      .success(function(data) {
-        vm.message = "Added to DB";
+  $scope.newGame = function() {
+    getAllPieces($http).success(function() {
+      vm.pieces = data;
+    }).error(function(e) {
+      vm.message = "Could not get list";
+    });
+
+    if(vm.pieces.length == 0) {
+      vm.A1.piece = "";
+      vm.A2.piece = "";
+      vm.A3.piece = "";
+      vm.B1.piece = "";
+      vm.B2.piece = "";
+      vm.B3.piece = "";
+      vm.C1.piece = "";
+      vm.C2.piece = "";
+      vm.C3.piece = "";
+      vm.A1.name = "A1";
+      vm.A2.name = "A2";
+      vm.A3.name = "A3";
+      vm.B1.name = "B1";
+      vm.B2.name = "B2";
+      vm.B3.name = "B3";
+      vm.C1.name = "C1";
+      vm.C2.name = "C2";
+      vm.C3.name = "C3";
+      addOnePiece($http, vm.A1).success(function(data) {
+        console.log(data);
       }).error(function(e) {
-        vm.message = "Didn't Add =(";
+        console.log(e);
       });
+      addOnePiece($http, vm.A2).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+      addOnePiece($http, vm.A3).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+      addOnePiece($http, vm.B1).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+      addOnePiece($http, vm.B2).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+      addOnePiece($http, vm.B3).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+      addOnePiece($http, vm.C1).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+      addOnePiece($http, vm.C2).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+      addOnePiece($http, vm.C3).success(function(data) {
+        console.log(data);
+      }).error(function(e) {
+        console.log(e);
+      });
+    }
   }
 
-  
-  vm.changeColor = function() {
-    while(vm.run) {
-    readOnePiece($http, vm.turn.pieceid).success(function(data) {
-      vm.turn.name = data.name;
-    }).error(function(e) {
-      vm.message = "Could not read vm.turn";
-    });
-    getAllPieces($http).success(function(data) {
-      vm.turn = data[0];
-    }).error(function(e) {
-      vm.message = "Error getting Color";
-    });
-
-    if(vm.turn.name === "white") {
-        vm.turn.name = "grey";
-      updateOnePiece($http, vm.turn, vm.turn.pieceid)
-        .success(function(data) {
-          vm.message = "Changed to Grey";
-        }).error(function(e) {
-          vm.message = "Error Changing Color";
-        });
-    } else if(vm.turn.name === "grey") {
-       if(vm.turn.name === "grey") {
-        vm.turn.name = "white";
-      updateOnePiece($http, vm.turn, vm.turn.pieceid)
-        .success(function(data) {
-          vm.message = "Changed to White";
-        }).error(function(e) {
-          vm.message = "Error Changing Color";
-        });
-    }
-    }
-    vm.run=false;
-  }
-}
-  $scope.test = [ "&#9812;" , "" ];
-
- /* vm.Click = function(spaceId) {
-	  var elem = document.getElementById(spaceId);
-	  if(elem.innerHTML=="X" && vm.clicks==0) {
-		  vm.premove = elem.innerHTML;
-		  vm.clicks++;
-		  vm.premoveNum = spaceId;
-	  }
-	  if(elem.innerHTML=="" && vm.clicks==1) {
-		  elem.innerHTML==vm.premove;
-		  vm.clicks--;
-		  vm.premoveNum.innerHTML = "";
-	  }
-  } */
-  
 }]);
 
 

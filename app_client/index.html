@@ -20,161 +20,34 @@
 	<script type="text/ng-template" id="pages/chess.html">
 	<h1> {{ vm.title }} </h1>
 	<h4> {{ vm.message }} </h4>
-	<input ng-click="vm.changeColor()" class="btn btn-success" value="Submit" type="submit">
+	<input ng-click="vm.newGame()" class="btn btn-success" value="Submit" type="submit">
 	<div ng-Controller="ChessCtrl">
 		<div class="content">
 			<div class="left">
 		<table style="width: 75%">
 			<!-- 1-8 -->
 			<tr>
-				<td><input ng-model="vm.turn.name">
+				<td class="grey"> {{ vm.C1.piece }}
 				</td>
-				<td class="grey">
+				<td> {{ vm.C2.piece }}
 				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
+				<td class="grey"> {{ vm.C3.piece }}
 				</td>
 			</tr>
-			<!-- 2-8 -->
 			<tr>
-				<td class="grey">
+				<td> {{ vm.B1.piece }}
 				</td>
-				<td>
+				<td class="grey"> {{ vm.B2.piece }}
 				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
+				<td> {{ vm.B3.piece }}
 				</td>
 			</tr>
-			<!-- 3-8 -->
 			<tr>
-				<td>
+				<td class="grey"> {{ vm.A1.piece }}
 				</td>
-				<td class="grey">
+				<td> {{ vm.A2.piece }}
 				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-			</tr>
-			<!-- 4-8 -->
-			<tr>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-			</tr>
-			<!-- 5-8 -->
-			<tr>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-			</tr>
-			<!-- 6-8 -->
-			<tr>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-			</tr>
-			<!-- 7-8 -->
-			<tr>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-			</tr>
-			<!-- 8-8 -->
-			<tr>
-				<td class="grey" id="0" name="0" ng-model="test[0]">{{test[0]}}
-				</td>
-				<td name="1" id="1" ng-model="test[1]">{{test[1]}}
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
-				</td>
-				<td class="grey">
-				</td>
-				<td>
+				<td class="grey"> {{ vm.A3.piece }}
 				</td>
 			</tr>
 		</table>
@@ -203,7 +76,6 @@
 	</div> <!-- end right -->
 	</div> <!-- end content -->
 	</script>
-	
     <div ng-view></div>
     
     <script src="/chessApp.js"></script>
