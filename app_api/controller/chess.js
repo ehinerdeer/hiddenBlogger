@@ -89,7 +89,7 @@ module.exports.editOne = function(req, res) {
     chessSch
 	.findOneAndUpdate(
 	    { _id: req.params.pieceid },
-	    { $set: {"name" : req.body.name, req.body.piece }},
+	    { $set: {"name" : req.body.name, "piece" : req.body.piece }},
 	
 	    function(err, response) {
 		if(err) {
