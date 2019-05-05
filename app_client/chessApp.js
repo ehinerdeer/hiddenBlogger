@@ -93,15 +93,15 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.message = "Don't Lose The Queen!";
   vm.pieces = {};
   
-  vm.A1.piece = "";
-  vm.A2.piece = "";
-  vm.A3.piece = "";
-  vm.B1.piece = "";
-  vm.B2.piece = "";
-  vm.B3.piece = "";
-  vm.C1.piece = "";
-  vm.C2.piece = "";
-  vm.C3.piece = "";
+  vm.A1 = {name: "", piece: ""};
+  vm.A2 = {name: "", piece: ""};
+  vm.A3 = {name: "", piece: ""};
+  vm.B1 = {name: "", piece: ""};
+  vm.B2 = {name: "", piece: ""};
+  vm.B3 = {name: "", piece: ""};
+  vm.C1 = {name: "", piece: ""};
+  vm.C2 = {name: "", piece: ""};
+  vm.C3 = {name: "", piece: ""};
 
   $scope.newGame = function() {
     getAllPieces($http).success(function() {
