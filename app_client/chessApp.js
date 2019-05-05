@@ -183,10 +183,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   $scope.A1Clicked = function() {
     if(vm.turn == "X"){
       vm.A1.piece = "X";
+      vm.turn = "O";
     } else {
       vm.A1.piece = "O";
+      vm.turn = "X";
     }
-    updateOnePiece($http, vm.A1, vm.A1.pieceid).success(function(data) {
+    updateOnePiece($http, vm.A1.piece, vm.A1.pieceid).success(function(data) {
         console.log("Updated: " + data);
       }).error(function(e) {
         console.log("Error: " + e);
