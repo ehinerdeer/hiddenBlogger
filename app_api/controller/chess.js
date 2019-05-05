@@ -74,7 +74,7 @@ if(req.params && req.params.pieceid){
 		sendJsonResponse (res, 404, err);
 		return;
 	    }
-	    console.log(blog);
+	    console.log(piece);
 	    sendJsonResponse(res, 200, piece);
 	});
 } else {
