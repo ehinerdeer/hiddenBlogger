@@ -84,11 +84,11 @@ if(req.params && req.params.pieceid){
 };
 
 module.exports.editOne = function(req, res) {
-    console.log("Updating Piece Position : " + req.params.pieceid);
+    console.log("Updating Piece Position : " + req.body.pieceid);
     console.log(req.body);
     chessSch
 	.findOneAndUpdate(
-	    { _id: req.params.pieceid },
+	    { _id: req.body.pieceid },
 	    { $set: {"name" : req.body.name, "piece" : req.body.piece }},
 	
 	    function(err, response) {
