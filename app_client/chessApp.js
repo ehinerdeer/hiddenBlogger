@@ -176,9 +176,9 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
 
   $scope.A1Clicked = function() {
     if(vm.turn == "X"){
-      vm.A1.name = "A1";
+      vm.A1.piece = "X";
     } else {
-      vm.A1.name = "A1";
+      vm.A1.piece = "O";
     }
     updateOnePiece($http, vm.A1, vm.A1.pieceid).success(function(data) {
         console.log("Updated: " + data);
