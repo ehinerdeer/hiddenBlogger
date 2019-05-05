@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var shutdown;
 
-var dbURI = 'mongodb://chess:chess@localhost:27017/chess';
+var dbURI = 'mongodb://blog:blog@localhost:27017/blog';
 mongoose.connect(dbURI, { useNewUrlParser: true });
 
 //Connection Checks

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var chessSch = mongoose.model('chess');
+var chessSch = mongoose.model('board');
 
 var sendJsonResponse = function(res, status, content) {
     res.status(status);
