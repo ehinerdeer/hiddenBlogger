@@ -14,8 +14,8 @@ router.post('/login', ctrlAuth.login);
 
 router.get('/chess', ctrlChess.pieceList);
 router.post('/chess', ctrlChess.addOne);
-router.get('/chess/:pieceid', ctrlChess.readOne);
-router.put('/chess/:pieceid', ctrlChess.editOne);
-router.delete('/chess/:pieceid', ctrlChess.deleteOne);
+router.get('/chess', ctrlChess.readOne);
+router.put('/chess', ctrlChess.editOne);
+router.delete('/chess', ctrlChess.deleteOne);
 
 module.exports = router;

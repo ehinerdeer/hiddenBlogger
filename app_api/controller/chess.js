@@ -59,10 +59,10 @@ module.exports.addOne = function(req, res) {
 };
 
 module.exports.readOne = function(req, res) {
-    console.log('Finding blogs', req.params);
-if(req.params && req.params.pieceid){
+    console.log('Finding piece', req.body);
+if(req.params && req.body.pieceid){
     chessSch
-	.findById(req.params.pieceid)
+	.findById(req.body.pieceid)
 	.exec(function(err, piece) {
 	    if(!piece){
 		sendJsonResponse(res, 404, {
@@ -102,10 +102,10 @@ module.exports.editOne = function(req, res) {
 };
 
 module.exports.deleteOne = function(req, res) {
-    console.log("Deleting piece with id : " + req.params.pieceid);
+    console.log("Deleting piece with id : " + req.body.pieceid);
     console.log(req.body);
     chessSch
-        .findByIdAndRemove(req.params.pieceid)
+        .findByIdAndRemove(req.body.pieceid)
 	.exec(
 	    function(err, response) {
 		if(err) {
