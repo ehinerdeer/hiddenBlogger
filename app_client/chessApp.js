@@ -104,7 +104,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.C3 = {name: "", piece: ""};
 
   $scope.newGame = function() {
-    getAllPieces($http).success(function() {
+    getAllPieces($http).success(function(data) {
       vm.pieces = data;
     }).error(function(e) {
       vm.message = "Could not get list";
