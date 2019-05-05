@@ -92,6 +92,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.title = "Tic Tac Toe";
   vm.message = "Don't Lose The Queen!";
   vm.pieces = {};
+  vm.turn = "";
   
   vm.A1 = {name: "A1", piece: "", pieceid: "5ccf6b077401225699db7241"};
   vm.A2 = {name: "A2", piece: "", pieceid: "5ccf6b077401225699db723e"};
@@ -104,6 +105,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.C3 = {name: "C3", piece: "", pieceid: "5ccf6b077401225699db7246"};
 
   $scope.newGame = function() {
+    vm.turn = "X";
     getAllPieces($http).success(function(data) {
       vm.pieces = data;
     }).error(function(e) {
@@ -169,9 +171,20 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+    } //end if
+  } // end newGame()
 
-
+  $scope.A1Clicked = function() {
+    if(vm.turn == "X"){
+      vm.A1.name = "X";
+    } else {
+      vm.A1.name = "O";
     }
+    updateOnePiece($http, vm.A1, vm.A1.pieceid).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
   }
 
 }]);

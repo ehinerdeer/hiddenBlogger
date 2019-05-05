@@ -23,7 +23,6 @@
 	<input ng-click="newGame()" class="btn btn-success" value="Submit" type="submit">
 	<div ng-Controller="ChessCtrl">
 		<div class="content">
-			<div class="left">
 		<table style="width: 75%">
 			<!-- 1-8 -->
 			<tr>
@@ -52,28 +51,6 @@
 			</tr>
 		</table>
 	</div>
-	</div> <!-- end left -->
-	<div class="right">
-		<div class="card" id="card-style">
-	    <form name="form" ng-Controller="ChessCtrl" ng-submit="vm.onSubmit()" style="padding: 20px;">
-	        <div class="form-group">
-		  <label style="width: 100%;">
-	              Move From</label>
-		  <input class="form-control" name="from" type="text">
-                </div>
-		  
-		  <div class="form-group">
-		    <label style="width: 100%">
-			   Move To
-			<input class="form-control" name="to" type="text">
-			</label>
-
-			<div>
-				<input class="btn btn-success" value="Submit" type="submit">
-			</div>
-	   </div>
-   </form>
-	</div> <!-- end right -->
 	</div> <!-- end content -->
 	</script>
     <div ng-view></div>

@@ -16,6 +16,11 @@ table tr td {
 	width: 60px;
 	height: 60px;
 	text-align:center;
+	cursor: pointer;
+}
+
+td {
+	height: 60px;
 }
 
 .grey {
@@ -23,24 +28,8 @@ table tr td {
 }
 
 .content{
-	width: 100%;
-}
-
-.left {
 	width: 80%;
 	text-align:center;
-}
-
-.right {
-	width: 15%;
-	margin-left: 5%;
-	text-align: center;
-}
-
-.stickyfooter {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
