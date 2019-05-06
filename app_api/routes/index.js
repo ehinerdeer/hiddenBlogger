@@ -12,7 +12,7 @@ var ctrlChess = require('../controller/chess');
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
-router.get('/chess', ctrlChess.pieceList);
+//router.get('/chess', ctrlChess.pieceList);
 router.post('/chess', ctrlChess.addOne);
 router.get('/chess', ctrlChess.readOne);
 router.put('/chess', ctrlChess.editOne);
