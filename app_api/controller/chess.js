@@ -59,8 +59,8 @@ module.exports.addOne = function(req, res) {
 };
 
 module.exports.readOne = function(req, res) {
-    console.log('Finding piece', req.body);
-if(req.body.pieceid){
+    console.log('Finding piece', req.pieceid);
+if(req.pieceid){
     chessSch
 	.findById(req.body.pieceid)
 	.exec(function(err, piece) {
