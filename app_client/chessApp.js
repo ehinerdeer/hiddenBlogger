@@ -104,6 +104,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.C2 = {name: "C2", piece: "", pieceid: "5ccf6b077401225699db7244"};
   vm.C3 = {name: "C3", piece: "", pieceid: "5ccf6b077401225699db7246"};
 
+    readOnePiece($http, vm.A1).success(function(data) {
+      vm.A1 = data;
+    }).error(function(e){
+      console.log("Error Reading: " + e);
+    });
+
   $scope.newGame = function() {
     vm.turn = "X";
     getAllPieces($http).success(function(data) {
@@ -112,11 +118,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       vm.message = "Could not get list";
     });
 
-    readOnePiece($http, vm.A1).success(function(data) {
-      vm.A1 = data;
-    }).error(function(e){
-      console.log("Error Reading: " + e);
-    });
+    
 
     if(vm.pieces) {
       vm.A1.piece = "";
