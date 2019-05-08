@@ -92,7 +92,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.title = "Tic Tac Toe";
   vm.pieces = {};
   vm.turn = "";
-  vm.A1 = {};
+  vm.A1 = null;
 
   getAllPieces($http).success(function(data) {
       vm.pieces = data;
@@ -101,7 +101,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
     });
 
   angular.forEach(vm.pieces, function(piece) {
-    if(piece.name === 'A1') {
+    if(piece.name == 'A1') {
       vm.A1 = piece;
     }
   });
