@@ -173,7 +173,9 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
           vm.C3 = piece;
         }
   });
-      vm.whosTurn = vm.turn;
+      if($scope.win) {
+        vm.message = "Game Over! Congrats!";
+      }
     }).error(function(e) {
       //vm.message = "Could not get list";
     });
@@ -413,6 +415,18 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
     }
   }
 
+  $scope.win() {
+    if(((vm.A1.piece == vm.B1.piece) && (vm.B1.piece == vm.C1.piece)) || 
+       ((vm.A1.piece == vm.A2.piece) && (vm.A2.piece == vm.A3.piece)) || 
+       ((vm.B1.piece == vm.B2.piece) && (vm.B2.piece == vm.B3.piece)) ||
+       ((vm.C1.piece == vm.C2.piece) && (vm.C2.piece == vm.C3.piece)) ||
+       ((vm.A2.piece == vm.B2.piece) && (vm.B2.piece == vm.C2.piece)) || 
+       ((vm.A3.piece == vm.B3.piece) && (vm.B3.piece == vm.C3.piece)) ||
+       ((vm.A1.piece == vm.B2.piece) && (vm.B2.piece == vm.C3.piece)) ||
+       ((vm.A3.piece == vm.B2.piece) && (vm.B2.piece == vm.C1.piece))) {
+      return true;
+    }
+  }
 
   $interval($scope.update, 2000);
 
