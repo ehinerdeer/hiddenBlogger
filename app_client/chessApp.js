@@ -119,7 +119,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.C3 = {name: "C3", piece: "", pieceid: "5ccf6b077401225699db7246"}; */
 
   $scope.update = function() {
-    readOnePiece($http, vm.A1._id).success(function(data) {
+    readOnePiece($http, vm.A1.pieceid).success(function(data) {
       vm.A1 = data;
     }).error(function(e){
       console.log("Error Reading: " + e);
@@ -211,7 +211,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       });
   }
 
-  $interval($scope.update, 500);
+  $interval($scope.update, 2000);
 
 }]);
 
