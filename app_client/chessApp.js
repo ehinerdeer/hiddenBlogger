@@ -120,8 +120,6 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       vm.message = "Could not get list";
     });
 
-    
-
     if(vm.pieces) {
       vm.A1.piece = "";
       vm.A2.piece = "";
@@ -199,7 +197,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       });
   }
 
-  $interval($scope.update(), 500);
+  $interval($scope.update, 500);
 
 }]);
 
