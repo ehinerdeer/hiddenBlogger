@@ -94,7 +94,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.pieces = {};
   vm.turn = "";
   
-  vm.A1 = {name: "A1", piece: "", pieceid: ObjectId("5ccf6b077401225699db7241")};
+  vm.A1 = {name: "A1", piece: "", pieceid: '5ccf6b077401225699db7241'};
   vm.A2 = {name: "A2", piece: "", pieceid: "5ccf6b077401225699db723e"};
   vm.A3 = {name: "A3", piece: "", pieceid: "5ccf6b077401225699db723f"};
   vm.B1 = {name: "B1", piece: "", pieceid: "5ccf6b077401225699db7240"};
