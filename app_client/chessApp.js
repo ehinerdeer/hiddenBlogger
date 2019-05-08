@@ -108,10 +108,15 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   
 
   $scope.update = function() {
-    readOnePiece($http, vm.A1.pieceid).success(function(data) {
-      vm.A1 = data;
-    }).error(function(e){
-      console.log("Error Reading: " + e);
+    getAllPieces($http).success(function(data) {
+      vm.pieces = data;
+      angular.forEach(vm.pieces, function(piece) {
+        if(piece.name == 'A1') {
+        vm.A1 = piece;
+    }
+  });
+    }).error(function(e) {
+      vm.message = "Could not get list";
     });
   }
 
