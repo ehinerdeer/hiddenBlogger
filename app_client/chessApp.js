@@ -91,15 +91,47 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   var vm = this;
   vm.title = "Tic Tac Toe";
   vm.pieces = {};
-  vm.turn = "";
+  vm.turn = "X";
   vm.A1 = {};
+  vm.A2 = {};
+  vm.A3 = {};
+  vm.B1 = {};
+  vm.B2 = {};
+  vm.B3 = {};
+  vm.C1 = {};
+  vm.C2 = {};
+  vm.C3 = {};
 
   getAllPieces($http).success(function(data) {
       vm.pieces = data;
       angular.forEach(vm.pieces, function(piece) {
         if(piece.name == 'A1') {
-        vm.A1 = piece;
-    }
+          vm.A1 = piece;
+        }
+        if(piece.name == 'A2') {
+          vm.A2 = piece;
+        }
+        if(piece.name == 'A3') {
+          vm.A3 = piece;
+        }
+        if(piece.name == 'B1') {
+          vm.B1 = piece;
+        }
+        if(piece.name == 'B2') {
+          vm.B2 = piece;
+        }
+        if(piece.name == 'B3') {
+          vm.B3 = piece;
+        }
+        if(piece.name == 'C1') {
+          vm.C1 = piece;
+        }
+        if(piece.name == 'C2') {
+          vm.C2 = piece;
+        }
+        if(piece.name == 'C3') {
+          vm.C3 = piece;
+        }
   });
     }).error(function(e) {
       vm.message = "Could not get list";
@@ -112,8 +144,32 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       vm.pieces = data;
       angular.forEach(vm.pieces, function(piece) {
         if(piece.name == 'A1') {
-        vm.A1 = piece;
-    }
+          vm.A1 = piece;
+        }
+        if(piece.name == 'A2') {
+          vm.A2 = piece;
+        }
+        if(piece.name == 'A3') {
+          vm.A3 = piece;
+        }
+        if(piece.name == 'B1') {
+          vm.B1 = piece;
+        }
+        if(piece.name == 'B2') {
+          vm.B2 = piece;
+        }
+        if(piece.name == 'B3') {
+          vm.B3 = piece;
+        }
+        if(piece.name == 'C1') {
+          vm.C1 = piece;
+        }
+        if(piece.name == 'C2') {
+          vm.C2 = piece;
+        }
+        if(piece.name == 'C3') {
+          vm.C3 = piece;
+        }
   });
     }).error(function(e) {
       vm.message = "Could not get list";
@@ -205,6 +261,118 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       });
   }
 
+  $scope.A2Clicked = function() {
+    if(vm.turn == "X"){
+      vm.A2.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.A2.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.A2).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
+  $scope.A3Clicked = function() {
+    if(vm.turn == "X"){
+      vm.A3.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.A3.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.A3).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
+  $scope.B1Clicked = function() {
+    if(vm.turn == "X"){
+      vm.B1.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.B1.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.B1).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
+  $scope.B2Clicked = function() {
+    if(vm.turn == "X"){
+      vm.B2.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.B2.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.B2).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
+  $scope.B3Clicked = function() {
+    if(vm.turn == "X"){
+      vm.B3.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.B3.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.B3).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
+  $scope.C1Clicked = function() {
+    if(vm.turn == "X"){
+      vm.C1.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.C1.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.C1).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
+  $scope.C2Clicked = function() {
+    if(vm.turn == "X"){
+      vm.C2.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.C2.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.C2).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
+  $scope.C3Clicked = function() {
+    if(vm.turn == "X"){
+      vm.C3.piece = "X";
+      vm.turn = "O";
+    } else {
+      vm.C3.piece = "O";
+      vm.turn = "X";
+    }
+    updateOnePiece($http, vm.C3).success(function(data) {
+        console.log("Updated: " + data);
+      }).error(function(e) {
+        console.log("Error: " + e);
+      });
+  }
   $interval($scope.update, 2000);
 
 }]);

@@ -26,27 +26,27 @@
 		<table style="width: 75%">
 			<!-- 1-8 -->
 			<tr>
-				<td class="grey"> {{ vm.C1.piece }}
+				<td class="grey" ng-click="C1Clicked()"> {{ vm.C1.piece }}
 				</td>
-				<td> {{ vm.C2.piece }}
+				<td ng-click="C2Clicked()"> {{ vm.C2.piece }}
 				</td>
-				<td class="grey"> {{ vm.C3.piece }}
+				<td class="grey" ng-click="C3Clicked()"> {{ vm.C3.piece }}
 				</td>
 			</tr>
 			<tr>
-				<td> {{ vm.B1.piece }}
+				<td ng-click="B1Clicked()"> {{ vm.B1.piece }}
 				</td>
-				<td class="grey"> {{ vm.B2.piece }}
+				<td class="grey" ng-click="B2Clicked()"> {{ vm.B2.piece }}
 				</td>
-				<td> {{ vm.B3.piece }}
+				<td ng-click="B3Clicked()"> {{ vm.B3.piece }}
 				</td>
 			</tr>
 			<tr>
 				<td class="grey" ng-click="A1Clicked()"> {{ vm.A1.piece }}
 				</td>
-				<td> {{ vm.A2.piece }}
+				<td ng-click="A2Clicked()"> {{ vm.A2.piece }}
 				</td>
-				<td class="grey"> {{ vm.A3.piece }}
+				<td class="grey" ng-click="A3Clicked()"> {{ vm.A3.piece }}
 				</td>
 			</tr>
 		</table>
