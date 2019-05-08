@@ -199,7 +199,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       });
   }
 
-  $interval(update(), 500);
+  $interval($scope.update(), 500);
 
 }]);
 
