@@ -174,9 +174,9 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
           vm.C3 = piece;
         }
   });
-      if($scope.win) {
+     /* if($scope.win) {
         vm.message = "Game Over! Congrats!";
-      }
+      } */
     }).error(function(e) {
       //vm.message = "Could not get list";
     });
@@ -427,7 +427,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
     }
   }
 
-  $scope.win = function() {
+ /* $scope.win = function() {
     if(vm.count >= 5) {
       if(((vm.A1.piece == vm.B1.piece) && (vm.B1.piece == vm.C1.piece)) || 
        ((vm.A1.piece == vm.A2.piece) && (vm.A2.piece == vm.A3.piece)) || 
@@ -440,7 +440,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
           return true;
       }
   }
-  }
+  } */
 
   $interval($scope.update, 2000);
 
