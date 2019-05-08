@@ -428,14 +428,14 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   }
 
   $scope.win = function() {
-    if((vm.count > 5) && ((vm.A1.piece == vm.B1.piece) && (vm.B1.piece == vm.C1.piece)) || 
+    if((vm.count >= 5) && (((vm.A1.piece == vm.B1.piece) && (vm.B1.piece == vm.C1.piece)) || 
        ((vm.A1.piece == vm.A2.piece) && (vm.A2.piece == vm.A3.piece)) || 
        ((vm.B1.piece == vm.B2.piece) && (vm.B2.piece == vm.B3.piece)) ||
        ((vm.C1.piece == vm.C2.piece) && (vm.C2.piece == vm.C3.piece)) ||
        ((vm.A2.piece == vm.B2.piece) && (vm.B2.piece == vm.C2.piece)) || 
        ((vm.A3.piece == vm.B3.piece) && (vm.B3.piece == vm.C3.piece)) ||
        ((vm.A1.piece == vm.B2.piece) && (vm.B2.piece == vm.C3.piece)) ||
-       ((vm.A3.piece == vm.B2.piece) && (vm.B2.piece == vm.C1.piece))) {
+       ((vm.A3.piece == vm.B2.piece) && (vm.B2.piece == vm.C1.piece)))) {
           return true;
     }
   }

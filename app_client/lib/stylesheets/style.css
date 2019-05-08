@@ -20,12 +20,12 @@ table tr td {
 }
 
 td {
-	background-color: blue;
+	border: 3px solid black;
 	height: 60px;
 }
 
 td:hover {
-	border: 3px solid blue;
+	background-color: teal;
 }
 
 .grey {
