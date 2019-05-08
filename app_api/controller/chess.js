@@ -59,10 +59,10 @@ module.exports.addOne = function(req, res) {
 };
 
 module.exports.readOne = function(req, res) {
-    console.log('Finding piece', req.pieceid);
-if(req.params.pieceid){
+    console.log('Finding piece', req.params);
+if(req.params && req.params.pieceid){
     chessSch
-	.findById(req.body.pieceid)
+	.findById(req.params.pieceid)
 	.exec(function(err, piece) {
 	    if(!piece){
 		sendJsonResponse(res, 404, {
