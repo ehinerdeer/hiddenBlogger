@@ -173,6 +173,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
           vm.C3 = piece;
         }
   });
+      vm.whosTurn = vm.turn;
     }).error(function(e) {
       //vm.message = "Could not get list";
     });
@@ -412,7 +413,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
     }
   }
 
-  
+
   $interval($scope.update, 2000);
 
 }]);
