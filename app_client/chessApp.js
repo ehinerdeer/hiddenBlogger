@@ -107,7 +107,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   })
 
   $scope.update = function() {
-    readOnePiece($http, vm.A1.pieceid).success(function(data) {
+    readOnePiece($http, vm.A1._id).success(function(data) {
       vm.A1 = data;
     }).error(function(e){
       console.log("Error Reading: " + e);
