@@ -60,7 +60,7 @@ module.exports.addOne = function(req, res) {
 
 module.exports.readOne = function(req, res) {
     console.log('Finding piece', req.pieceid);
-if(req.pieceid){
+if(req.params.pieceid){
     chessSch
 	.findById(req.body.pieceid)
 	.exec(function(err, piece) {
