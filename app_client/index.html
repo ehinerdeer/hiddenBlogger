@@ -20,33 +20,34 @@
 	<script type="text/ng-template" id="pages/chess.html">
 	<h1> {{ vm.title }} </h1>
 	<h4> {{ vm.message }} </h4>
-	<input ng-click="newGame()" class="btn btn-success" value="Submit" type="submit">
+	<h5>It Is "{{ vm.whosTurn }}" 's Turn</h5>
+	<input ng-click="newGame()" class="btn btn-success" value="New Game" type="submit">
 	<div ng-Controller="ChessCtrl">
 		<div class="content">
 		<table style="width: 75%">
 			<!-- 1-8 -->
 			<tr>
-				<td class="grey" ng-click="C1Clicked()"> {{ vm.C1.piece }}
+				<td class="grey" ng-click="C1Clicked()" style="border-left:none; border-top: none;"> {{ vm.C1.piece }}
 				</td>
-				<td ng-click="C2Clicked()"> {{ vm.C2.piece }}
+				<td ng-click="C2Clicked() style="border-top: none;"> {{ vm.C2.piece }}
 				</td>
-				<td class="grey" ng-click="C3Clicked()"> {{ vm.C3.piece }}
+				<td class="grey" ng-click="C3Clicked() style="border-top: none; border-right:none;"> {{ vm.C3.piece }}
 				</td>
 			</tr>
 			<tr>
-				<td ng-click="B1Clicked()"> {{ vm.B1.piece }}
+				<td ng-click="B1Clicked() style="border-left:none;"> {{ vm.B1.piece }}
 				</td>
 				<td class="grey" ng-click="B2Clicked()"> {{ vm.B2.piece }}
 				</td>
-				<td ng-click="B3Clicked()"> {{ vm.B3.piece }}
+				<td ng-click="B3Clicked() style="border-right:none;"> {{ vm.B3.piece }}
 				</td>
 			</tr>
 			<tr>
-				<td class="grey" ng-click="A1Clicked()"> {{ vm.A1.piece }}
+				<td class="grey" ng-click="A1Clicked() style="border-left:none; border-bottom:none;"> {{ vm.A1.piece }}
 				</td>
-				<td ng-click="A2Clicked()"> {{ vm.A2.piece }}
+				<td ng-click="A2Clicked()" style="border-bottom:none;"> {{ vm.A2.piece }}
 				</td>
-				<td class="grey" ng-click="A3Clicked()"> {{ vm.A3.piece }}
+				<td class="grey" ng-click="A3Clicked()" style="border-bottom:none; border-right:none;"> {{ vm.A3.piece }}
 				</td>
 			</tr>
 		</table>

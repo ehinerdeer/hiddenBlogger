@@ -92,6 +92,8 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.title = "Tic Tac Toe";
   vm.pieces = {};
   vm.turn = "X";
+  vm.message = "Welcome to Tic Tac Toe";
+  vm.whosTurn = vm.turn;
   vm.A1 = {};
   vm.A2 = {};
   vm.A3 = {};
@@ -134,7 +136,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
         }
   });
     }).error(function(e) {
-      vm.message = "Could not get list";
+      //vm.message = "Could not get list";
     });
 
   
@@ -172,7 +174,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
         }
   });
     }).error(function(e) {
-      vm.message = "Could not get list";
+      //vm.message = "Could not get list";
     });
   }
 
@@ -181,7 +183,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
     getAllPieces($http).success(function(data) {
       vm.pieces = data;
     }).error(function(e) {
-      vm.message = "Could not get list";
+      //vm.message = "Could not get list";
     });
 
     if(vm.pieces) {
@@ -247,6 +249,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   } // end newGame()
 
   $scope.A1Clicked = function() {
+    if(vm.A1.piece == "") {
     if(vm.turn == "X"){
       vm.A1.piece = "X";
       vm.turn = "O";
@@ -259,9 +262,13 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+    }else {
+      vm.message = "A1 is already selected with " + vm.A1.piece + " pick another square";
+    }
   }
 
   $scope.A2Clicked = function() {
+    if(vm.A2.piece == "") {
     if(vm.turn == "X"){
       vm.A2.piece = "X";
       vm.turn = "O";
@@ -274,8 +281,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "A2 is already selected with " + vm.A2.piece + " pick another square";
+    }
   }
   $scope.A3Clicked = function() {
+    if(vm.A3.piece == "") {
     if(vm.turn == "X"){
       vm.A3.piece = "X";
       vm.turn = "O";
@@ -288,8 +299,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "A3 is already selected with " + vm.A3.piece + " pick another square";
+    }
   }
   $scope.B1Clicked = function() {
+    if(vm.B1.piece == "") {
     if(vm.turn == "X"){
       vm.B1.piece = "X";
       vm.turn = "O";
@@ -302,8 +317,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "B1 is already selected with " + vm.B1.piece + " pick another square";
+    }
   }
   $scope.B2Clicked = function() {
+    if(vm.B2.piece == "") {
     if(vm.turn == "X"){
       vm.B2.piece = "X";
       vm.turn = "O";
@@ -316,8 +335,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "B2 is already selected with " + vm.B2.piece + " pick another square";
+    }
   }
   $scope.B3Clicked = function() {
+    if(vm.B3.piece == "") {
     if(vm.turn == "X"){
       vm.B3.piece = "X";
       vm.turn = "O";
@@ -330,8 +353,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "B3 is already selected with " + vm.B3.piece + " pick another square";
+    }
   }
   $scope.C1Clicked = function() {
+    if(vm.C1.piece == "") {
     if(vm.turn == "X"){
       vm.C1.piece = "X";
       vm.turn = "O";
@@ -344,8 +371,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "C1 is already selected with " + vm.C1.piece + " pick another square";
+    }
   }
   $scope.C2Clicked = function() {
+    if(vm.C2.piece == "") {
     if(vm.turn == "X"){
       vm.C2.piece = "X";
       vm.turn = "O";
@@ -358,8 +389,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "C2 is already selected with " + vm.C2.piece + " pick another square";
+    }
   }
   $scope.C3Clicked = function() {
+    if(vm.C3.piece == "") {
     if(vm.turn == "X"){
       vm.C3.piece = "X";
       vm.turn = "O";
@@ -372,7 +407,12 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
       }).error(function(e) {
         console.log("Error: " + e);
       });
+      }else {
+      vm.message = "C3 is already selected with " + vm.C3.piece + " pick another square";
+    }
   }
+
+  
   $interval($scope.update, 2000);
 
 }]);
