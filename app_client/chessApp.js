@@ -92,7 +92,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.title = "Tic Tac Toe";
   vm.pieces = {};
   vm.turn = "";
-  vm.A1 = null;
+  vm.A1 = {}};
 
   getAllPieces($http).success(function(data) {
       vm.pieces = data;
