@@ -442,7 +442,7 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   }
   } */
 
-  $interval($scope.update, 2000);
+  $interval($scope.update, 500);
 
 }]);
 
