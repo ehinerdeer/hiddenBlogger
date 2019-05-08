@@ -92,7 +92,6 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
   vm.title = "Tic Tac Toe";
   vm.pieces = {};
   vm.turn = "";
-
   vm.A1 = {};
 
   getAllPieces($http).success(function(data) {
@@ -102,21 +101,10 @@ app.controller('ChessCtrl' , ['$http', '$scope', '$interval', function ChessCtrl
     });
 
   angular.forEach(vm.pieces, function(piece) {
-    if(piece.name == "A1") {
+    if(piece.name == 'A1') {
       vm.A1 = piece;
     }
   })
-
-  /*
-  vm.A1 = {name: "A1", piece: "", pieceid: '5ccf6b077401225699db7241'};
-  vm.A2 = {name: "A2", piece: "", pieceid: "5ccf6b077401225699db723e"};
-  vm.A3 = {name: "A3", piece: "", pieceid: "5ccf6b077401225699db723f"};
-  vm.B1 = {name: "B1", piece: "", pieceid: "5ccf6b077401225699db7240"};
-  vm.B2 = {name: "B2", piece: "", pieceid: "5ccf6b077401225699db7242"};
-  vm.B3 = {name: "B3", piece: "", pieceid: "5ccf6b077401225699db7243"};
-  vm.C1 = {name: "C1", piece: "", pieceid: "5ccf6b077401225699db7245"};
-  vm.C2 = {name: "C2", piece: "", pieceid: "5ccf6b077401225699db7244"};
-  vm.C3 = {name: "C3", piece: "", pieceid: "5ccf6b077401225699db7246"}; */
 
   $scope.update = function() {
     readOnePiece($http, vm.A1.pieceid).success(function(data) {
