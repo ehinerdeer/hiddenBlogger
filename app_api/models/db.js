@@ -45,4 +45,5 @@ process.on('SIGTERM', function() {
 
 //Bring in Schema
 require('./users');
+require('./menu');
 require('./blog');
