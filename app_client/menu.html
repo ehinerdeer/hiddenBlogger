@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="menuApp">
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="/lib/angular-route.min.js"></script>
+<script src="/lib/angular-ui-router.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div ng-Controller="MenuNavController">
+		<nav></nav>
+	</div>
+	<script type="text/ng-template" id="pages/lyndon.html">
+		<h1>This is a test</h1>		
+	</script>
+	<div ng-view></div>
+	<script src="/menuApp.js"></script>
+</body>
+</html>

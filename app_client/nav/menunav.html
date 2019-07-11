@@ -1,0 +1,11 @@
+<!-- Menu Navigation -->
+<nav class="navbar fixed-top navbar-expand-sm navbar-primary bg-green">
+<div class="collapse navbar-collapse">
+	<a class="navbar-brand" href="#/">Lyndon Diner</a> 
+		<a class="nav-item nav-link active" href="#/menulist">Menu</a>
+		<a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="#/menuadd">Add Item</a>
+		<a ng-show="!vm.isLoggedIn()" class="nav-item nav-link active" href="#/login">Sign In</a>
+		<a ng-show="isLoggedIn()" class="nav-item nav-link active" href="" ng-click="vm.logout()">Logout<small>({{vm.currentUser().email}})</small></a>
+	</div>
+</div>	
+</nav>
